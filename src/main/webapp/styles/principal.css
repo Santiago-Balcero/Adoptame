@@ -1,0 +1,117 @@
+body{
+    background: #85E2FF;
+    height: 100vh;
+}
+.navigation {
+    top: 130px;
+    background-color: #ED8115;
+    height: 50px;
+    padding: 10px 15px;
+    overflow: hidden;
+    border: black;
+    border-width: 10px; 
+}
+nav a {
+    padding: 16px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+.nav-item:hover {
+    color: white;
+    background-color: #2D768C;    
+}
+.nav-logo{
+    padding: 0px;
+}
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: unset;
+    background-color: #ED8115;
+    height: 130px;
+    padding: 0px;
+    text-shadow: 1px 1px 2px #000000;
+}
+.navbar-brand{
+    width: 16%;
+    height: 100%;
+    padding: 0px;
+    margin-right:0px;
+}
+.img-fluid {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.navbar-brand-text{
+    width: 36%;
+    height: 100%;
+    color: white;
+    background-color: #E6913C;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+h1{
+    font-size: 6vw;
+    text-align: center;
+}
+.img-header { 
+    width: 20%;
+    height: 130px; 
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+#registrarse {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 50px;
+    height: 10vh;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+#registrarse p {
+    padding: 3px 10px;
+}
+#btn-registrar {
+    color: white;
+    background-color: #ED8115;  
+    height: 4.5vh;
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #ac7f52;
+    border-radius: 5px;   
+}
+#btn-registrar:hover {
+    color: white;
+    background-color: #2D768C;
+    border: 1px solid #205667;
+}
+.cont-form{
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+}
+form {
+    background-color: #5bbbd9;
+    border-radius: 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    padding: 2% 4% 2% 4%;
+}
+.ini-ses{
+    display: flex;
+    justify-content: center;
+}
+.btn{
+    margin-top: 7%;
+}
+.btn-primary{
+    background-color: #2D768C;
+    border: 1px solid #205667;
+}
+.btn-primary:hover{
+    color: white;
+    background-color: #ED8115;
+    border: 1px solid #ac7f52;
+}

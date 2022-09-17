@@ -1,0 +1,88 @@
+body{
+    background: #85E2FF;
+}
+.navigation {
+    top: 130px;
+    background-color: #ED8115;
+    height: 50px;
+    padding: 10px 15px;
+    overflow: hidden;
+    border: black;
+    border-width: 10px; 
+}
+nav a {
+    padding: 16px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+.nav-custom:hover {
+    color: white;
+    background-color: #2D768C;    
+}
+.nav-logo{
+    padding: 0px;
+}
+#main-cont{
+    display:flex;
+    justify-content: center;
+    padding-top: 2vh;
+}
+.card{
+    border: none;
+    height: 100%;
+}
+.input-group-text{
+    background-color: white;
+    border: none;
+    width: 20%;
+}
+.form-label{
+    width: 80%;
+    padding-left: 2vw;
+    padding-top: 1vh;
+}
+.card-body-btn{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.btn-primary{
+    background-color: #2D768C;
+    border: 1px solid #205667;
+}
+.btn-primary:hover{
+    background-color: #ED8115; 
+    border: 1px solid #ac7f52;
+}
+.nav-tab{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.nav-link{
+    color:black;
+}
+.nav-link:hover{
+    color:black;
+}
+.active{
+    background-color: white;
+}
+.tab-pane{
+    border-top-right-radius: 0.375em;
+    border-bottom-right-radius: 0.375em;
+    padding-top:10vh;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    height: 100%;
+}
+.tab-content{
+    height: 94%;
+    width: 70vw;
+    border-top-right-radius: 0.375em;
+    border-bottom-right-radius: 0.375em;
+}
+.inside-cont{
+    width: 20vw;
+    border: 3px solid blue;
+}
