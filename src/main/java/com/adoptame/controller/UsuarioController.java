@@ -35,7 +35,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{username}")
-    public Usuario getPersona(@PathVariable(name = "id") String username) {
+    public Usuario getUsuario(@PathVariable(name = "username") String username) {
         return service.getUsuario(username);
     }
 
@@ -55,5 +55,4 @@ public class UsuarioController {
     public String deleteUsuario(@PathVariable(name="username")String username) {
         return service.deleteUsuario(username);
     }
-
 }
