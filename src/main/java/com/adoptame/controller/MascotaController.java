@@ -21,7 +21,6 @@ import com.adoptame.services.MascotaService;
 //Decorador para que esta clase procese las peticiones HTTP
 @RestController
 @RequestMapping("/mascotas")
-
 public class MascotaController {
     private MascotaService service;
 
