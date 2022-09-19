@@ -91,7 +91,6 @@ public class UsuarioService {
         try {
             session.remove(usuario);
             session.getTransaction().commit();
-            session.close();
             message = "Usuario eliminado con éxito.";
         }
         catch (Exception e) {

@@ -20,7 +20,7 @@ import com.adoptame.services.MascotaService;
 
 //Decorador para que esta clase procese las peticiones HTTP
 @RestController
-@RequestMapping("/mascotas")
+@RequestMapping("/adoptame/mascotas")
 public class MascotaController {
     private MascotaService service;
 
@@ -38,8 +38,8 @@ public class MascotaController {
         return service.getMascota(idmascota);
     }
 
-    @GetMapping("/usuario/{idcontacto}")
-    public List<Mascota> getMascotasUsuario(@PathVariable(name="idcontacto") String idcontacto) {
+    @GetMapping("/username/{username}")
+    public List<Mascota> getMascotasUsuario(@PathVariable(name="username") String idcontacto) {
         return service.getMascotasUsuario(idcontacto);
     }
 
@@ -59,6 +59,5 @@ public class MascotaController {
     public String deleteMascota(@PathVariable(name="idmascota")int idmascota) {
         return service.deleteMascota(idmascota);
     }
-
 
 }
