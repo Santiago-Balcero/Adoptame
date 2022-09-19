@@ -22,55 +22,70 @@
         <a class='nav-logo'href="https://www.twitter.com/"><img width="30" src="./img/LOGO tw.png" alt="twitter.png"></a>
     </nav>
     <main>
-        <form action="">
+        <form onsubmit="getData(event)">
+        <div id="alert-cont">
+            <div class="alert alert-success" role="alert">
+                A simple success alert with.
+            </div>
+        </div>
         <div class="row">
             <div class="col">
-                <label for="especie" class="form-label">Especie:</label>
-                <select class="form-select" aria-label="Default select example" id="especie">
-                    <option selected>Canino</option>
-                    <option value="1">Felino</option>
+                <label for="especie-input" class="form-label">Especie:</label>
+                <select class="form-select" aria-label="Default select example" id="especie-input" name="especie">
+                    <option selected>Gato</option>
+                    <option>Perro</option>
                 </select>
             </div>
             <div class="col">
-                <label for="email" class="form-label">Estado de salud:</label>
+                <label for="salud-input" class="form-label">Estado de salud:</label>
                 <div class="form-floating">
-                    <textarea class="form-control" placeholder="Descripción breve" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <textarea class="form-control" placeholder="Descripción breve" id="salud-input" style="height: 100px" name="salud"></textarea>
                     <label for="floatingTextarea2">Máximo 100 palabras</label>
                   </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <label for="raza" class="form-label">Raza:</label>
-                <input type="text" class="form-control" id="raza">
+                <label for="raza-input" class="form-label">Raza:</label>
+                <input type="text" class="form-control" id="raza-input" name="raza">
             </div>
             <div class="col">
-                <label for="ciudad" class="form-label">Ciudad:</label>
-                <input type="text" class="form-control" id="ciudad">
+                <label for="ciudad-input" class="form-label">Ciudad:</label>
+                <input type="text" class="form-control" id="ciudad-input" name="ciudad">
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <label for="tamanio" class="form-label">Tamaño:</label>
-                <select class="form-select" aria-label="Default select example" id="tamanio">
+                <label for="tamanio-input" class="form-label">Tamaño:</label>
+                <select class="form-select" aria-label="Default select example" id="tamanio-input" name="tamanio">
                     <option selected>Pequeño</option>
-                    <option value="med">Mediano</option>
-                    <option value="big">Grande</option>
+                    <option>Mediano</option>
+                    <option>Grande</option>
                 </select>
             </div>
             <div class="col">
-                <label for="cantidad" class="form-label">Cantidad:</label>
-                <input type="number" class="form-control" id="cantidad" min="1" max="20">
+                <label for="cantidad-input" class="form-label">Cantidad:</label>
+                <input type="number" class="form-control" id="cantidad-input" min="1" max="20" name="cantidad">
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <label for="color" class="form-label">Color:</label>
-                <input type="text" class="form-control" id="color">
+                <label for="color-input" class="form-label">Color:</label>
+                <input type="text" class="form-control" id="color-input" name="color">
             </div>
             <div class="col">
-                <label for="edad" class="form-label">Edad (en meses):</label>
-                <input type="number" class="form-control" id="cantidad" min="1" max="48">
+                <label for="edad-input" class="form-label">Edad (en meses):</label>
+                <input type="number" class="form-control" id="edad-input" min="1" max="48" name="edad">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="nombre-input" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre-input" name="nombre">
+            </div>
+            <div class="col">
+                <label for="foto-input" class="form-label">Url-foto: </label>
+                <input type="text" class="form-control" id="foto-input" name="foto">
             </div>
         </div>
         <div class="row">
@@ -80,5 +95,6 @@
         </div>
         </form>
 </main>
+<script src="./js/mascota.js"></script>
 </body>
 </html>

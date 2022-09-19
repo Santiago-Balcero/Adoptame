@@ -7,17 +7,19 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.adoptame.model.Usuario;
 import com.adoptame.model.Mascota;
 
 public class MascotaService {
     private SessionFactory factory;
 
-    public MascotaService(){
-        factory = new Configuration()
+    public MascotaService() {
+        try {
+            factory = new Configuration()
             .configure("cfg.xml")
             .addAnnotatedClass(Mascota.class)
             .buildSessionFactory();
+        } catch (Exception e) {
+        }
     }
 
     public List<Mascota> getListaMascotas() {
@@ -29,6 +31,7 @@ public class MascotaService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        session.close();
         return mascotas;
     }
 
@@ -46,12 +49,16 @@ public class MascotaService {
     }
 
     public List<Mascota> getMascotasUsuario(String idcontacto) {
-        List<Mascota> mascotas = new ArrayList<>();
+        List<Mascota> mascotas = new ArrayList<Mascota>();
         Session session = factory.openSession();
         session.beginTransaction();
-        mascotas = session.createQuery("from Mascota where idcontacto = :u", Mascota.class)
-                    .setParameter("u", idcontacto)
-                    .list();
+        try {
+            String sql = String.format("FROM Mascota WHERE idcontacto='%s'", idcontacto);
+            mascotas = session.createQuery(sql, Mascota.class).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        session.close();
         return mascotas;
     }
 
@@ -89,18 +96,18 @@ public class MascotaService {
 
     public String deleteMascota(int idmascota) {
         String message = "";
+        Mascota mascota = getMascota(idmascota);
         Session session = factory.openSession();
         session.beginTransaction();
         try {
-            Mascota mascota = getMascota(idmascota);
             session.remove(mascota);
             session.getTransaction().commit();
-            session.close();
             message = "Mascota eliminada con éxito.";
         }
         catch (Exception e) {
             message = "Error al eliminar a la mascota de la base de datos:\n" + e.getMessage();
         }
+        session.close();
         return message;
     }
 }

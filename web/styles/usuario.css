@@ -26,7 +26,7 @@ nav a {
 main{
     display: flex;
     justify-content: center;
-    padding-top: 7%;
+    margin-top: 6%;
 }
 form {
     background-color: #5bbbd9;
@@ -34,6 +34,7 @@ form {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     max-width: 50%;
     padding: 2% 4% 2% 4%;
+
 }
 .form-text{
     color: rgb(222, 222, 222);
@@ -50,4 +51,9 @@ form {
 .btn:hover{
     background-color: #2D768C;
     border: 1px solid #205667;
+}
+button {
+    border: none;
+    background-color: inherit;
+    text-decoration: underline;
 }

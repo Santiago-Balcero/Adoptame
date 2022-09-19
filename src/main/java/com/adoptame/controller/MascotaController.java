@@ -10,17 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.adoptame.model.Usuario;
 import com.adoptame.model.Mascota;
 import com.adoptame.services.MascotaService;
 
 
 //Decorador para que esta clase procese las peticiones HTTP
 @RestController
-@RequestMapping("/mascotas")
+@RequestMapping("/adoptame/mascotas")
 public class MascotaController {
     private MascotaService service;
 
@@ -34,12 +32,12 @@ public class MascotaController {
     }
 
     @GetMapping("/{idmascota}")
-    public Mascota getMascota(@PathVariable(name = "idmascota") int idmascota) {
+    public Mascota getMascota(@PathVariable(name="idmascota") int idmascota) {
         return service.getMascota(idmascota);
     }
 
-    @GetMapping("/usuario/{idcontacto}")
-    public List<Mascota> getMascotasUsuario(@PathVariable(name="idcontacto") String idcontacto) {
+    @GetMapping("/username/{username}")
+    public List<Mascota> getMascotasUsuario(@PathVariable(name="username") String idcontacto) {
         return service.getMascotasUsuario(idcontacto);
     }
 
@@ -59,6 +57,5 @@ public class MascotaController {
     public String deleteMascota(@PathVariable(name="idmascota")int idmascota) {
         return service.deleteMascota(idmascota);
     }
-
 
 }

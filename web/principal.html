@@ -26,17 +26,17 @@
     </nav>
     <section id="registrarse">
         <p>¿Es la primera vez que utilizas Adopta.me?</p>
-        <a id="btn-registrar" href="usuario2.html">Registrarse</a>
+        <a id="btn-registrar" href="usuario.html">Registrarse</a>
     </section>
     <div class="cont-form">
-        <form action="">
+        <form onsubmit="iniciarSesion(event)">
             <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Documento</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="1018345678">
+            <label for="documento-input" class="form-label">Documento</label>
+            <input type="text" class="form-control" id="documento-input" placeholder="1018345678" name="documento">
             </div>
             <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Ingresa tu contraseña">
+            <label for="contrasena" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="contrasena" placeholder="Ingresa tu contraseña" name="contrasena">
             </div>
             <div class="mb-3 ini-ses">
             <input class="btn btn-primary" type="submit" value="Iniciar sesión">
@@ -46,5 +46,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src="./js/principal.js"></script>
 </body>
 </html>

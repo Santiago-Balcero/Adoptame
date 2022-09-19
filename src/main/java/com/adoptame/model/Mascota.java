@@ -22,15 +22,17 @@ public class Mascota {
     private String foto;
     private String idcontacto;
 
-    public Mascota(String especie, String raza, String color, String tamanio, int edad, String salud, String ciudad, int cantidad, String idcontacto) {
+    public Mascota(String especie, String raza, String color, String tamanio, int edad, String nombre, String salud, String ciudad, int cantidad, String foto, String idcontacto) {
         this.especie = especie;
         this.raza = raza;
         this.color = color;
         this.tamanio = tamanio;
         this.edad = edad;
+        this.nombre = nombre;
         this.salud = salud;
         this.ciudad = ciudad;
         this.cantidad = cantidad;
+        this.foto = foto;
         this.idcontacto = idcontacto;
     }
 

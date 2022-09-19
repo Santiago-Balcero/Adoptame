@@ -11,13 +11,15 @@ import jakarta.persistence.Table;
 public class Adopcion {
     @Id
     private int idadopcion;
-    private String idusername;
+    private String username_registro;
+    private String username_adoptante;
     private int idmascota;
     private Calendar fecha_adopcion;
     private String estadoadopcion;
 
-    public Adopcion(String idusername, int idmascota, Calendar fecha_adopcion, String estadoadopcion) {
-        this.idusername = idusername;
+    public Adopcion(String username_registro, String username_adoptante, int idmascota, Calendar fecha_adopcion, String estadoadopcion) {
+        this.username_registro = username_registro;
+        this. username_adoptante = username_adoptante;
         this.idmascota = idmascota;
         this.fecha_adopcion = fecha_adopcion;
         this.estadoadopcion = estadoadopcion;
@@ -30,7 +32,8 @@ public class Adopcion {
     public String toString() {
         String info = "----------------------------------------\n";
         info += "Id adopción: " + idadopcion;
-        info += "\nId usuario que adopta: " + idusername;
+        info += "Id usuario que registró mascota: " + username_registro;
+        info += "\nId usuario que adopta: " + username_adoptante;
         info += "\nId mascota: " + idmascota;
         info += "\nFecha adopción: " + fecha_adopcion;
         info += "\nEstado de adopción: " + estadoadopcion;
@@ -46,12 +49,20 @@ public class Adopcion {
         this.idadopcion = idadopcion;
     }
 
-    public String getIdusername() {
-        return idusername;
+    public String getUsername_registro() {
+        return username_registro;
     }
 
-    public void setIdusername(String idusername) {
-        this.idusername = idusername;
+    public void setUsername_registro(String username_registro) {
+        this.username_registro = username_registro;
+    }
+
+    public String getUsername_adoptante() {
+        return username_adoptante;
+    }
+
+    public void setUsername_adoptante(String username_adoptante) {
+        this.username_adoptante = username_adoptante;
     }
 
     public int getIdmascota() {
