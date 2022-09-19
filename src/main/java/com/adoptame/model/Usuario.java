@@ -19,12 +19,12 @@ public class Usuario {
     private String foto;
     private String biografia;
 
-    public Usuario(String username, String tipo_documento, String contrasena, String nombres, String apellidos, String email, String telefono, String ciudad) {
+    public Usuario(String tipo_documento, String email, String username, String telefono, String nombres, String ciudad, String apellidos, String contrasena){
         this.username = username;
         this.tipo_documento = tipo_documento;
-        this.contrasena = contrasena;
         this.nombres = nombres;
         this.apellidos = apellidos;
+        this.contrasena = contrasena;
         this.email = email;
         this.telefono = telefono;
         this.ciudad = ciudad;

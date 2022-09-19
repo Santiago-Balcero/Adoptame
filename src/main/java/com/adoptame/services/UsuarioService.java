@@ -14,10 +14,15 @@ public class UsuarioService {
     private SessionFactory factory;
 
     public UsuarioService(){
-        factory = new Configuration()
+        try {
+            factory = new Configuration()
             .configure("cfg.xml")
             .addAnnotatedClass(Usuario.class)
             .buildSessionFactory();
+            System.out.println("Conexion establecida");
+        } catch (Exception e) {
+            System.out.println("Error en la conexion");
+        }
     }
 
     public List<Usuario> getListaUsuarios() {
@@ -29,6 +34,7 @@ public class UsuarioService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        session.close();
         return personas;
     }
 
@@ -79,10 +85,10 @@ public class UsuarioService {
 
     public String deleteUsuario(String username) {
         String message = "";
+        Usuario usuario = getUsuario(username);
         Session session = factory.openSession();
         session.beginTransaction();
         try {
-            Usuario usuario = getUsuario(username);
             session.remove(usuario);
             session.getTransaction().commit();
             session.close();
@@ -91,6 +97,7 @@ public class UsuarioService {
         catch (Exception e) {
             message = "Error al eliminar al usuario de la base de datos:\n" + e.getMessage();
         }
+        session.close();
         return message;
     }
 }
