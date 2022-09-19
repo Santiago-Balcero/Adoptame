@@ -1,0 +1,136 @@
+body{
+    background: #85E2FF;
+}
+.navigation {
+    top: 130px;
+    background-color: #ED8115;
+    height: 50px;
+    padding: 10px 15px;
+    overflow: hidden;
+    border: black;
+    border-width: 10px; 
+}
+nav a {
+    padding: 16px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+.nav-custom:hover {
+    color: white;
+    background-color: #2D768C;    
+}
+.nav-logo{
+    padding: 0px;
+}
+#main-cont{
+    display:flex;
+    justify-content: center;
+    padding-top: 2vh;
+}
+.card{
+    border: none;
+    border-bottom-right-radius: 0px;
+}
+.input-group-text{
+    background-color: white;
+    border: none;
+    width: 3.5vw;
+}
+.form-label{
+    width: 80%;
+    padding-left: 2vw;
+    padding-top: 1vh;
+}
+.card-body-btn{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.btn-primary{
+    background-color: #2D768C;
+    border: 1px solid #205667;
+}
+.btn-primary:hover{
+    background-color: #ED8115; 
+    border: 1px solid #ac7f52;
+}
+#tabs-cont{
+    height: 89vh;
+}
+.nav-tab{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.nav-link{
+    color:black;
+}
+.nav-link:hover{
+    color:black;
+}
+.active{
+    background-color: white;
+}
+.tab-pane{
+    border-top-right-radius: 0.375em;
+    border-bottom-right-radius: 0.375em;
+    padding-top:30px;
+    padding-left: 25px;
+    padding-right: 10px;
+    height: 100%;
+    overflow: scroll;
+}
+.tab-content{
+    background-color: white;
+    height: 94%;
+    width: 70vw;
+    border-top-right-radius: 0.375em;
+    border-bottom-right-radius: 0.375em;
+}
+.container{
+    padding-top:15px;
+    height: 100%;
+    overflow: scroll;
+}
+.col{
+    display: flex;
+    justify-content: center;
+}
+.blog-card{
+    width: 75%;
+    border-radius: 0px;
+}
+.img-blog{
+    height: 30vh;
+    border-radius: 0px;
+}
+.blog-card-title{
+    text-decoration: none;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: black;
+    font-size: larger;
+    font-weight: 500;
+    line-height: 1.2;
+}
+.blog-card-title:hover{
+    color: #ED8115;
+}
+.img-mascota{
+    height: 30vh;
+    border-top-right-radius: 0.375rem;
+    border-top-left-radius: 0.375rem;
+}
+#mascota-card{
+    border: 1px solid rgb(183, 183, 183);
+    border-radius: 0.375rem;
+}
+
+
+
+
+
+
+
+
+
