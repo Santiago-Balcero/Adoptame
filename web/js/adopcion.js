@@ -29,8 +29,13 @@ async function getMascotas(url){
 }
 
 async function main(){
-    const mascotas = await getMascotas(url)
-    mostrarMascotas(mascotas)
+    if(sessionStorage.getItem("AuthenticationState") === null) {
+        window.location.href = "principal.html"
+    }
+    else {
+        const mascotas = await getMascotas(url)
+        mostrarMascotas(mascotas)
+    }
 }
 
 main()

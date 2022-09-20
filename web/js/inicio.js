@@ -124,11 +124,16 @@ function getDataUrl () {
 }
 
 async function main() {
-    const username = getDataUrl()
-    const usuario = await getUser(username)
-    const mascotas = await getMascotasIdcontacto(username)
-    mostrarPerfil(usuario)
-    mostrarMascotas(mascotas)
+    if(sessionStorage.getItem("AuthenticationState") === null) {
+        window.location.href = "principal.html"
+    }
+    else {
+        const username = getDataUrl()
+        const usuario = await getUser(username)
+        const mascotas = await getMascotasIdcontacto(username)
+        mostrarPerfil(usuario)
+        mostrarMascotas(mascotas)
+    }
 }
 
 main()

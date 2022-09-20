@@ -8,6 +8,8 @@ async function iniciarSesion(e){
     const user = await getUser(username)
     const pass = await hashPass(password)
     if(pass == user.contrasena) {
+        //new
+        sessionStorage.setItem("AuthenticationState", "Authenticated")
         window.location.href = "inicio.html?username=" + user.username
     }
     else {
@@ -33,3 +35,8 @@ async function hashPass(password){
     return pass
 }
 
+function main(){
+    sessionStorage.clear()
+}
+
+main()
