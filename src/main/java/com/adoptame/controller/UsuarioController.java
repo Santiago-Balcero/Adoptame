@@ -38,8 +38,15 @@ public class UsuarioController {
     }
 
     @GetMapping("/{username}")
+    @CrossOrigin("*")
     public Usuario getUsuario(@PathVariable(name = "username") String username) {
         return userService.getUsuario(username);
+    }
+
+    @GetMapping("/pass/{password}")
+    @CrossOrigin("*")
+    public String hashPass(@PathVariable(name = "password") String password) throws NoSuchAlgorithmException {
+        return pass.toHexString(pass.getSHA(password));
     }
 
     @PostMapping

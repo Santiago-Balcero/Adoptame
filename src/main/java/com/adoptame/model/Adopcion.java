@@ -11,14 +11,12 @@ import jakarta.persistence.Table;
 public class Adopcion {
     @Id
     private int idadopcion;
-    private String username_registro;
     private String username_adoptante;
     private int idmascota;
     private Calendar fecha_adopcion;
     private String estadoadopcion;
 
-    public Adopcion(String username_registro, String username_adoptante, int idmascota, Calendar fecha_adopcion, String estadoadopcion) {
-        this.username_registro = username_registro;
+    public Adopcion(String username_adoptante, int idmascota, Calendar fecha_adopcion, String estadoadopcion) {
         this. username_adoptante = username_adoptante;
         this.idmascota = idmascota;
         this.fecha_adopcion = fecha_adopcion;
@@ -32,7 +30,6 @@ public class Adopcion {
     public String toString() {
         String info = "----------------------------------------\n";
         info += "Id adopción: " + idadopcion;
-        info += "Id usuario que registró mascota: " + username_registro;
         info += "\nId usuario que adopta: " + username_adoptante;
         info += "\nId mascota: " + idmascota;
         info += "\nFecha adopción: " + fecha_adopcion;
@@ -47,14 +44,6 @@ public class Adopcion {
 
     public void setIdadopcion(int idadopcion) {
         this.idadopcion = idadopcion;
-    }
-
-    public String getUsername_registro() {
-        return username_registro;
-    }
-
-    public void setUsername_registro(String username_registro) {
-        this.username_registro = username_registro;
     }
 
     public String getUsername_adoptante() {

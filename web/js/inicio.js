@@ -12,7 +12,7 @@ function mostrarPerfil(usuario){
         imagen=usuario.foto
     }
     if(usuario.biografia==null){
-        bio = 'Escribe algo sobre ti'
+        bio = 'Escribe algo sobre ti.'
     }
     else{
         bio = usuario.biografia
