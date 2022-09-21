@@ -5,6 +5,9 @@ function mostrarMascotas(mascotas) {
     let cards = ""
     for(let i = 0; i < mascotas.length; i++) {
         const mascota = mascotas[i]
+        if(mascota.nombre == null) {
+            mascota.nombre = "Nombre no registrado"
+        }
         cards += `
         <div class="col">
             <div class="card">

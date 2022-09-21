@@ -59,6 +59,9 @@ function mostrarMascotas(mascotas){
     }
     else if (mascotas.length==1){
         const mascota = mascotas[0]
+        if(mascota.nombre == null) {
+            mascota.nombre = "Nombre no registrado"
+        }
         card+=`
         <div class="col">
         <div class="card blog-card" id="mascota-card">
@@ -76,6 +79,9 @@ function mostrarMascotas(mascotas){
     else {
         for(let i = 0; i < mascotas.length; i++){
             const mascota = mascotas[i]
+            if(mascota.nombre == null) {
+                mascota.nombre = "Nombre no registrado"
+            }
             card+=`
             <div class="col">
                 <div class="card blog-card" id="mascota-card">
@@ -121,6 +127,11 @@ function getDataUrl () {
     const urlHTML = new URLSearchParams(search)
     const username = urlHTML.get("username")
     return username
+}
+
+function adoptar(e) {
+    const username = getDataUrl()
+    window.location.href = "adopcion.html?username=" + username
 }
 
 async function main() {

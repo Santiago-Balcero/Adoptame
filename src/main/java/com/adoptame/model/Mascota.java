@@ -137,7 +137,4 @@ public class Mascota {
     public void setIdcontacto(String idcontacto) {
         this.idcontacto = idcontacto;
     }
-
-    
-
 }
