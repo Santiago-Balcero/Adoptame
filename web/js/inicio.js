@@ -1,5 +1,6 @@
 const url = "http://localhost:8080/adoptame/usuarios"
 const url2 = "http://localhost:8080/adoptame/mascotas"
+const url3 = "http://localhost:8080/adoptame/adopcion"
 
 function mostrarPerfil(usuario){
     const section = document.getElementById('profile-card')
@@ -12,7 +13,7 @@ function mostrarPerfil(usuario){
         imagen=usuario.foto
     }
     if(usuario.biografia==null){
-        bio = 'Escribe algo sobre ti.'
+        bio = 'Escribe algo sobre ti'
     }
     else{
         bio = usuario.biografia
@@ -107,6 +108,67 @@ function mostrarMascotas(mascotas){
 
 }
 
+async function mostrarAdopciones(adopciones) {
+    const section = document.getElementById('home-tab-pane')
+    let card = '<div class="row row-cols-1 row-cols-md-2 g-4">'
+    if(adopciones.length==0){
+        section.innerHTML = `
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Aún no has realizado ninguna adopción.</h5>
+                <p class="card-text">Comienza ahora:</p>
+                <a class="btn btn-primary" onclick=adoptar()">Adoptar</a>
+            </div>
+        </div>`
+    }
+    else if (adopciones.length==1){
+        const adopcion = adopciones[0]
+        const idmascota = adopcion.idmascota
+        const mascota = await getMascota(idmascota)
+        if(mascota.nombre == null) {
+            mascota.nombre = "Nombre no registrado"
+        }
+        card+=`
+        <div class="col">
+        <div class="card blog-card" id="mascota-card">
+          <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
+          <div class="card-body">
+            <a href="#" class="blog-card-title">${mascota.nombre}</a>
+            <p class="card-text">Raza: ${mascota.raza}</p>
+            <p class="card-text">Edad: ${mascota.edad} meses</p>
+            <p class="card-text">Ciudad: ${mascota.ciudad}</p>
+          </div>
+        </div>
+      </div>
+        `
+    }
+    else {
+        for(let i = 0; i < adopciones.length; i++){
+            const adopcion = adopciones[i]
+            const idmascota = adopcion.idmascota
+            const mascota = await getMascota(idmascota)
+            if(mascota.nombre == null) {
+                mascota.nombre = "Nombre no registrado"
+            }
+            card+=`
+            <div class="col">
+                <div class="card blog-card" id="mascota-card">
+                <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
+                    <div class="card-body">
+                        <a href="#" class="blog-card-title">${mascota.nombre}</a>
+                        <p class="card-text">Raza: ${mascota.raza}</p>
+                        <p class="card-text">Edad: ${mascota.edad} meses</p>
+                        <p class="card-text">Ciudad: ${mascota.ciudad}</p>
+                    </div>
+                </div>
+            </div>
+            `
+        }
+    }
+    card+='</div>'
+    section.innerHTML = card
+}
+
 async function getUser(username){
     const resp = await fetch(`${url}/${username}`, {
         method: "GET"
@@ -123,7 +185,8 @@ async function getMascotasIdcontacto(username){
     return mascotas
 }
 
-function registrarMascota(username){
+function registrarMascota(){
+    const username = getDataUrl()
     window.location.href = "mascota.html?username=" + username
 }
 
@@ -171,10 +234,17 @@ async function main() {
     else {
         const username = getDataUrl()
         const usuario = await getUser(username)
+<<<<<<< HEAD
         const mascotas = await getMascotasIdcontacto(username)
         document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
+=======
+>>>>>>> dev
         mostrarPerfil(usuario)
+        const mascotas = await getMascotasIdcontacto(username)
+        document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
         mostrarMascotas(mascotas)
+        const adopciones = await getAdopcionesUsername(username)
+        await mostrarAdopciones(adopciones)
     }
 }
 

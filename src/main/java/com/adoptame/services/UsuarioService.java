@@ -19,7 +19,9 @@ public class UsuarioService {
             .configure("cfg.xml")
             .addAnnotatedClass(Usuario.class)
             .buildSessionFactory();
+            System.out.println("Conexion establecida");
         } catch (Exception e) {
+            System.out.println("Error en la conexion");
         }
     }
 

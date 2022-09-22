@@ -11,18 +11,21 @@ function mostrarMascotas(mascotas) {
         cards += `
         <div class="col">
             <div class="card">
-                <img src="${mascota.foto}" class="card-img-top" alt="...">
+                <img src="${mascota.foto}" class="card-img-top">
                 <div class="card-body">
-                    <a href="#" class="blog-card-title">${mascota.nombre}</a>
-                    <p class="card-text">Raza: ${mascota.raza}</p>
+                    <h5>${mascota.nombre}</h5>
                     <p class="card-text">Edad: ${mascota.edad} meses</p>
-                    <p class="card-text">Ciudad: ${mascota.ciudad_mascota}</p>
+                    <button class="btn btn-primary" onclick="mostrarInformacion(${mascota.idmascota})">Información</button>
                 </div>
             </div>
         </div>       
         `
     }
     section.innerHTML = cards
+}
+
+function mostrarInformacion(idmascota){
+    window.location.href = "info-adopcion.html?idmascota=" + idmascota
 }
 
 async function getMascotas(url){
