@@ -5,14 +5,15 @@ async function iniciarSesion(e){
     const form = e.target
     const username =form.documento.value
     const password =form.contrasena.value
-    const usuario = await getUser(username)
-    const passw = usuario.contrasena
-    
-    if(password==passw){
-        window.location.href = "inicio.html?username=" + usuario.username
+    const user = await getUser(username)
+    const pass = await hashPass(password)
+    if(pass == user.contrasena) {
+        //new
+        sessionStorage.setItem("AuthenticationState", "Authenticated")
+        window.location.href = "inicio.html?username=" + user.username
     }
     else {
-        alert("Usuario o contraseña incorrectos")
+        alert("Usuario o contraseña incorrectos.")
     }
 }
 
@@ -24,3 +25,18 @@ async function getUser(username){
     return user
 }
 
+async function hashPass(password){
+    const resp = await fetch(`${url}/pass/${password}`, {
+        method: "GET"
+    })
+    console.log(resp)
+    const pass = await resp.text()
+    console.log(pass)
+    return pass
+}
+
+function main(){
+    sessionStorage.clear()
+}
+
+main()

@@ -60,3 +60,11 @@ function getDataUrl () {
     const username = url.get("username")
     return username
 }
+
+function main() {
+    if(sessionStorage.getItem("AuthenticationState") === null) {
+        window.location.href = "principal.html"
+    }
+}
+
+main()

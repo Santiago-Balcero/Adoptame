@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.adoptame.model.Usuario;
 import com.adoptame.model.Mascota;
 
 public class MascotaService {

@@ -59,6 +59,9 @@ function mostrarMascotas(mascotas){
     }
     else if (mascotas.length==1){
         const mascota = mascotas[0]
+        if(mascota.nombre == null) {
+            mascota.nombre = "Nombre no registrado"
+        }
         card+=`
         <div class="col">
         <div class="card blog-card" id="mascota-card">
@@ -76,6 +79,9 @@ function mostrarMascotas(mascotas){
     else {
         for(let i = 0; i < mascotas.length; i++){
             const mascota = mascotas[i]
+            if(mascota.nombre == null) {
+                mascota.nombre = "Nombre no registrado"
+            }
             card+=`
             <div class="col">
                 <div class="card blog-card" id="mascota-card">
@@ -94,6 +100,10 @@ function mostrarMascotas(mascotas){
     card+='</div>'
     section.innerHTML = card
 
+}
+
+function mostrarAdopciones() {
+    
 }
 
 async function getUser(username){
@@ -124,11 +134,16 @@ function getDataUrl () {
 }
 
 async function main() {
-    const username = getDataUrl()
-    const usuario = await getUser(username)
-    const mascotas = await getMascotasIdcontacto(username)
-    mostrarPerfil(usuario)
-    mostrarMascotas(mascotas)
+    if(sessionStorage.getItem("AuthenticationState") === null) {
+        window.location.href = "principal.html"
+    }
+    else {
+        const username = getDataUrl()
+        const usuario = await getUser(username)
+        const mascotas = await getMascotasIdcontacto(username)
+        mostrarPerfil(usuario)
+        mostrarMascotas(mascotas)
+    }
 }
 
 main()
