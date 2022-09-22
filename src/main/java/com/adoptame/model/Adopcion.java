@@ -14,13 +14,11 @@ public class Adopcion {
     private String username_adoptante;
     private int idmascota;
     private Calendar fecha_adopcion;
-    private String estadoadopcion;
+  
 
-    public Adopcion(String username_adoptante, int idmascota, Calendar fecha_adopcion, String estadoadopcion) {
+    public Adopcion(String username_adoptante, int idmascota) {
         this. username_adoptante = username_adoptante;
         this.idmascota = idmascota;
-        this.fecha_adopcion = fecha_adopcion;
-        this.estadoadopcion = estadoadopcion;
     }
     
     public Adopcion() {
@@ -33,7 +31,6 @@ public class Adopcion {
         info += "\nId usuario que adopta: " + username_adoptante;
         info += "\nId mascota: " + idmascota;
         info += "\nFecha adopción: " + fecha_adopcion;
-        info += "\nEstado de adopción: " + estadoadopcion;
         info += "\n----------------------------------------\n";
         return info;
     }
@@ -68,13 +65,5 @@ public class Adopcion {
 
     public void setFecha_adopcion(Calendar fecha_adopcion) {
         this.fecha_adopcion = fecha_adopcion;
-    }
-
-    public String getEstadoadopcion() {
-        return estadoadopcion;
-    }
-
-    public void setEstadoadopcion(String estadoadopcion) {
-        this.estadoadopcion = estadoadopcion;
     }
 }
