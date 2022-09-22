@@ -30,7 +30,7 @@ public class MascotaService {
         Session session = factory.openSession();
         session.beginTransaction();
         try {
-            mascotas = session.createQuery("from Mascota", Mascota.class).list();
+            mascotas = session.createQuery("FROM Mascota WHERE adopcion=0", Mascota.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,5 +1,6 @@
 package com.adoptame.controller;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,10 +21,12 @@ import com.adoptame.services.UsuarioService;
 @RequestMapping("/adoptame/usuarios")
 public class UsuarioController {
     private UsuarioService userService;
+    private ContrasenaController pass;
     
 
     public UsuarioController() {
         userService = new UsuarioService();
+        pass = new ContrasenaController();
     }
 
     //Decorador para indicar que este método se ejecuta cuando la petición HTTP es GET
@@ -35,13 +38,24 @@ public class UsuarioController {
     }
 
     @GetMapping("/{username}")
+    @CrossOrigin("*")
     public Usuario getUsuario(@PathVariable(name = "username") String username) {
         return userService.getUsuario(username);
     }
 
+    @GetMapping("/pass/{password}")
+    @CrossOrigin("*")
+    public String hashPass(@PathVariable(name = "password") String password) throws NoSuchAlgorithmException {
+        return pass.toHexString(pass.getSHA(password));
+    }
+
     @PostMapping
-    public String createUsuario(@RequestBody Usuario usuario) {
-        return userService.createUsuario(usuario);
+    public String createUsuario(@RequestBody Usuario usuario) throws NoSuchAlgorithmException {
+        if(pass.checkContrasena(usuario.getContrasena())) {
+            usuario.setContrasena(pass.toHexString(pass.getSHA(usuario.getContrasena())));
+            return userService.createUsuario(usuario);
+        }
+        return "Contraseña no válida.";
     }
 
     @PutMapping
