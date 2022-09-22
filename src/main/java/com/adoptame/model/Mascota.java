@@ -26,7 +26,6 @@ public class Mascota {
         this.especie = especie;
         this.raza = raza;
         this.color = color;
-        this.tamanio = tamanio;
         this.edad = edad;
         this.nombre = nombre;
         this.salud = salud;

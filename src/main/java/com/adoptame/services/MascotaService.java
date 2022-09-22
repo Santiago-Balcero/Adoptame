@@ -18,7 +18,9 @@ public class MascotaService {
             .configure("cfg.xml")
             .addAnnotatedClass(Mascota.class)
             .buildSessionFactory();
+            System.out.println("Conexion establecida");
         } catch (Exception e) {
+            System.out.println("Error en la conexion");
         }
     }
 

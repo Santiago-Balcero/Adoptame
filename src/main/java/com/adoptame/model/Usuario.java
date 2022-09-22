@@ -25,6 +25,7 @@ public class Usuario {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.contrasena = contrasena;
+        this.contrasena = contrasena;
         this.email = email;
         this.telefono = telefono;
         this.ciudad = ciudad;

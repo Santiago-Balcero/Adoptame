@@ -24,28 +24,20 @@ nav a {
     padding: 0px;
 }
 .container-fluid{
-    padding-top: 1%;
-}
-#cards-cont{
-    padding: 0px;
-    border: 2px solid red;
-    height: 90vh;
-    overflow: scroll;
-}
-.col{
     display: flex;
     justify-content: center;
+    margin-top: 2%;
 }
-#col1{
-    width: 20%;
+.card{
+    padding-bottom: 0px;
 }
-#col2{
-    width: 80%;
-    padding: 0px;
+.card-body{
+    padding: 40px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
-#btn-cont{
-    display: flex;
-    justify-content: center;
+.card-img-top{
+    height: 60%;
 }
 .btn-primary{
     background-color: #ED8115; 
@@ -55,11 +47,8 @@ nav a {
     background-color: #2D768C;
     border: 1px solid #205667;
 }
-#page-nav{
-    padding-top: 10px;
+#btn-section{
     display: flex;
     justify-content: center;
-}
-.page-link{
-    color: #ED8115;
+    margin-top: 50px;
 }
