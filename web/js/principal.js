@@ -13,7 +13,12 @@ async function iniciarSesion(e){
         window.location.href = "inicio.html?username=" + user.username
     }
     else {
-        alert("Usuario o contraseña incorrectos.")
+        const section = document.getElementById('alert-cont')
+        section.innerHTML = `
+        <div class="alert alert-danger" role="alert">
+        Usuario o contraseña incorrectos.
+        </div>
+        `
     }
 }
 

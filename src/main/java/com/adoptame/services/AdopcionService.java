@@ -40,7 +40,7 @@ public class AdopcionService {
         try {
             session.persist(adopcion);
             session.getTransaction().commit();
-            message = "Registro de adopción realizado con éxito.";
+            message = "Adopción realizada con éxito.";
         } catch (Exception e) {
             e.printStackTrace();
             message = "Error al registrar la adopción en la base de datos:\n" + e.getMessage();
