@@ -234,11 +234,6 @@ async function main() {
     else {
         const username = getDataUrl()
         const usuario = await getUser(username)
-<<<<<<< HEAD
-        const mascotas = await getMascotasIdcontacto(username)
-        document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
-=======
->>>>>>> dev
         mostrarPerfil(usuario)
         const mascotas = await getMascotasIdcontacto(username)
         document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
