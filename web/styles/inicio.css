@@ -116,6 +116,10 @@ nav a {
 .blog-card-title:hover{
     color: #ED8115;
 }
+.nolist-card{
+    margin: 30px;
+    margin-left: 70px;
+}
 .img-mascota{
     height: 30vh;
     border-top-right-radius: 0.375rem;
