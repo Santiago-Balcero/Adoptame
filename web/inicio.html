@@ -11,16 +11,17 @@
 <body>
     <nav class='navigation'>
         <a ><img width="35" src="./img/LOGO A navbar.png" alt="logo.png"></a>
-        <a class="nav-item nav-custom" href="principal.html" >Inicio</a>
+        <a class="nav-item nav-custom" href="" id="inicio" >Inicio</a>
         <a class="nav-item nav-custom" href="" >Nosotros</a>
         <a class="nav-item nav-custom" href="" >Ayuda</a>
+        <a class="nav-item nav-custom" href="principal.html" >Cerrar sesión</a>
         <a class='nav-logo'href="https://www.facebook.com/"><img width="30" src="./img/LOGO facebook.png" alt="facebook.png"></a>
         <a class='nav-logo'href="https://www.instagram.com/"><img width="30" src="./img/LOGO ig.png" alt="instragam.png"></a>
         <a class='nav-logo'href="https://www.twitter.com/"><img width="30" src="./img/LOGO tw.png" alt="twitter.png"></a>
     </nav>
 <section id="main-cont">
     <div class="card" style="width: 18rem;" id="profile-card">
-
+    </div>
     </div>
     <section id="tabs-cont">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -40,17 +41,16 @@
                 <div class="card-body">
                     <h5 class="card-title">Aún no has realizado ninguna adopción.</h5>
                     <p class="card-text">Comienza ahora:</p>
-                    <a href="#" class="btn btn-primary" onclick="adoptar(event)" name="btn-adoptar">Adoptar</a>
+                    <a class="btn btn-primary" onclick="adoptar()" name="btn-adoptar">Adoptar</a>
                 </div>
             </div>
         </div>
         <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
- 
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Aún no has registrado ninguna mascota.</h5>
                     <p class="card-text">Comienza ahora:</p>
-                    <a class="btn btn-primary" onclick="registrarMascota()">Registrar</a>
+                    <a class="btn btn-primary" onclick="registrarMascota()" name="btn-registro-mascota">Registrar</a>
                 </div>
             </div>
         </div>

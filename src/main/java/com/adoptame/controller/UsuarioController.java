@@ -60,8 +60,12 @@ public class UsuarioController {
 
     @PutMapping
     @CrossOrigin("*")
-    public String updateUsuario(@RequestBody Usuario usuario) {
-        return userService.updateUsuario(usuario);
+    public String updateUsuario(@RequestBody Usuario usuario) throws NoSuchAlgorithmException {
+        if(pass.checkContrasena(usuario.getContrasena())) {
+            usuario.setContrasena(pass.toHexString(pass.getSHA(usuario.getContrasena())));
+            return userService.updateUsuario(usuario);
+        }
+        return "Contraseña no válida.";
     }
 
     @DeleteMapping("/{username}")

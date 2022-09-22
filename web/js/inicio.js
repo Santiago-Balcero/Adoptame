@@ -38,7 +38,12 @@ function mostrarPerfil(usuario){
             </div></li>
         </ul>
         <div class="card-body-btn">
-            <a href="#" class="btn btn-primary">Editar perfil</a>
+            <a href="#" class="btn btn-primary" onclick="editar(event)">Editar perfil</a>
+        </div>
+        <div class="card-body-btn">
+            <a href="#" class="btn btn-primary" onclick="deleteUsuario()">Eliminar cuenta</a>
+        </div>
+        <div id="delete-alert">
         </div>
     `
     section.innerHTML = perfil
@@ -122,16 +127,41 @@ function registrarMascota(username){
     window.location.href = "mascota.html?username=" + username
 }
 
-function getDataUrl () {
+function getDataUrl() {
     const search = window.location.search
     const urlHTML = new URLSearchParams(search)
     const username = urlHTML.get("username")
     return username
 }
 
-function adoptar(e) {
+function adoptar() {
     const username = getDataUrl()
     window.location.href = "adopcion.html?username=" + username
+}
+
+function editar() {
+    const username = getDataUrl()
+    window.location.href = "usuario.html?username=" + username
+}
+
+async function deleteUsuario() {
+    const username = getDataUrl()
+    const resp = await fetch(`${url}/${username}`, {
+        method: "DELETE"
+    })
+    const text = await resp.text()
+    const section = document.getElementById("delete-alert")
+    const alert = `
+        <div class="alert alert-success" role="alert">
+        ${text}<button class="alert-link" id="ir-perfil" onclick="loadPrincipal()">Salir</button>
+        </div>
+    `
+    section.innerHTML = alert
+    window.location.href = "principal.html"
+}
+
+function loadPrincipal() {
+    window.location.herf = "principal.html"
 }
 
 async function main() {
@@ -142,6 +172,7 @@ async function main() {
         const username = getDataUrl()
         const usuario = await getUser(username)
         const mascotas = await getMascotasIdcontacto(username)
+        document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
         mostrarPerfil(usuario)
         mostrarMascotas(mascotas)
     }
