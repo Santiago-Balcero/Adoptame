@@ -25,13 +25,21 @@ function mostrarMascotas(mascotas) {
 }
 
 function mostrarInformacion(idmascota){
-    window.location.href = "info-adopcion.html?idmascota=" + idmascota
+    const username = getDataUrl()
+    window.location.href = "info-adopcion.html?idmascota=" + idmascota + "&username=" + username
 }
 
 async function getMascotas(url){
     const resp = await fetch(url)
     const mascotas = resp.json()
     return mascotas
+}
+
+function getDataUrl() {
+    const search = window.location.search
+    const urlHTML = new URLSearchParams(search)
+    const username = urlHTML.get("username")
+    return username
 }
 
 async function main(){

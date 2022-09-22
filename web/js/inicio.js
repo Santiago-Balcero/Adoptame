@@ -39,7 +39,7 @@ function mostrarPerfil(usuario){
             </div></li>
         </ul>
         <div class="card-body-btn">
-            <a href="#" class="btn btn-primary">Editar perfil</a>
+            <button class="btn btn-primary">Editar perfil</button>
         </div>
     `
     section.innerHTML = perfil
@@ -48,17 +48,7 @@ function mostrarPerfil(usuario){
 function mostrarMascotas(mascotas){
     const section = document.getElementById('profile-tab-pane')
     let card = '<div class="row row-cols-1 row-cols-md-2 g-4">'
-    if(mascotas.length==0){
-        section.innerHTML = `
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Aún no has registrado ninguna mascota.</h5>
-                <p class="card-text">Comienza ahora:</p>
-                <a class="btn btn-primary" onclick="registrarMascota()">Registrar</a>
-            </div>
-        </div>`
-    }
-    else if (mascotas.length==1){
+    if (mascotas.length==1){
         const mascota = mascotas[0]
         if(mascota.nombre == null) {
             mascota.nombre = "Nombre no registrado"
@@ -72,12 +62,17 @@ function mostrarMascotas(mascotas){
             <p class="card-text">Raza: ${mascota.raza}</p>
             <p class="card-text">Edad: ${mascota.edad} meses</p>
             <p class="card-text">Ciudad: ${mascota.ciudad}</p>
+            <div class="card-body-btn">
+            <button class="btn btn-primary">Actualizar</button>
+            </div>
           </div>
         </div>
       </div>
         `
+        card+='</div>'
+        section.innerHTML = card
     }
-    else {
+    else if (mascotas.length>1){
         for(let i = 0; i < mascotas.length; i++){
             const mascota = mascotas[i]
             if(mascota.nombre == null) {
@@ -92,31 +87,33 @@ function mostrarMascotas(mascotas){
                         <p class="card-text">Raza: ${mascota.raza}</p>
                         <p class="card-text">Edad: ${mascota.edad} meses</p>
                         <p class="card-text">Ciudad: ${mascota.ciudad}</p>
+                        <div class="card-body-btn">
+                            <button class="btn btn-primary">Actualizar</button>
+                        </div>
                     </div>
                 </div>
             </div>
             `
         }
+        card+='</div>'
+        section.innerHTML = card
     }
-    card+='</div>'
-    section.innerHTML = card
-
+    else {
+        section.innerHTML = `
+        <div class="card nolist-card">
+            <div class="card-body">
+                <h5 class="card-title">Aún no has registrado ninguna mascota.</h5>
+                <p class="card-text">Comienza ahora:</p>
+                <button class="btn btn-primary" onclick="registrarMascota()">Registrar</button>
+            </div>
+        </div>`
+    }
 }
 
 async function mostrarAdopciones(adopciones) {
     const section = document.getElementById('home-tab-pane')
     let card = '<div class="row row-cols-1 row-cols-md-2 g-4">'
-    if(adopciones.length==0){
-        section.innerHTML = `
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Aún no has realizado ninguna adopción.</h5>
-                <p class="card-text">Comienza ahora:</p>
-                <a class="btn btn-primary" onclick=adoptar()">Adoptar</a>
-            </div>
-        </div>`
-    }
-    else if (adopciones.length==1){
+    if (adopciones.length==1){
         const adopcion = adopciones[0]
         const idmascota = adopcion.idmascota
         const mascota = await getMascota(idmascota)
@@ -136,8 +133,10 @@ async function mostrarAdopciones(adopciones) {
         </div>
       </div>
         `
+        card+='</div>'
+        section.innerHTML = card
     }
-    else {
+    else if (adopciones.length>1){
         for(let i = 0; i < adopciones.length; i++){
             const adopcion = adopciones[i]
             const idmascota = adopcion.idmascota
@@ -159,9 +158,20 @@ async function mostrarAdopciones(adopciones) {
             </div>
             `
         }
+        card+='</div>'
+        section.innerHTML = card
     }
-    card+='</div>'
-    section.innerHTML = card
+    else {
+        section.innerHTML = `
+        <div class="card nolist-card">
+            <div class="card-body">
+                <h5 class="card-title">Aún no has realizado ninguna adopción.</h5>
+                <p class="card-text">Comienza ahora:</p>
+                <button class="btn btn-primary" onclick="adoptar()">Adoptar</button>
+            </div>
+        </div>`
+    }
+    console.log(adopciones)
 }
 
 async function getUser(username){
@@ -220,11 +230,11 @@ async function main() {
     else {
         const username = getDataUrl()
         const usuario = await getUser(username)
-        mostrarPerfil(usuario)
         const mascotas = await getMascotasIdcontacto(username)
-        mostrarMascotas(mascotas)
         const adopciones = await getAdopcionesUsername(username)
-        await mostrarAdopciones(adopciones)
+        mostrarPerfil(usuario)
+        mostrarMascotas(mascotas)
+        mostrarAdopciones(adopciones)
     }
 }
 

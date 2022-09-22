@@ -19,7 +19,7 @@ public class App {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/usuarios").allowedOrigins("*");
+                registry.addMapping("/adoptame/**").allowedOrigins("*");
             }
         };
     }
