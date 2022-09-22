@@ -16,7 +16,7 @@ public class AdopcionService {
             .buildSessionFactory();
     }
 
-    public String createMascota(Adopcion adopcion) {
+    public String createAdopcion(Adopcion adopcion) {
         String message = "";
         Session session = factory.openSession();
         session.beginTransaction();

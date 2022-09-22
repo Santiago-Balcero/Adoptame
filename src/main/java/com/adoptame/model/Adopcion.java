@@ -11,16 +11,14 @@ import jakarta.persistence.Table;
 public class Adopcion {
     @Id
     private int idadopcion;
-    private String idusername;
+    private String username_adoptante;
     private int idmascota;
     private Calendar fecha_adopcion;
-    private String estadoadopcion;
+  
 
-    public Adopcion(String idusername, int idmascota, Calendar fecha_adopcion, String estadoadopcion) {
-        this.idusername = idusername;
+    public Adopcion(String username_adoptante, int idmascota) {
+        this. username_adoptante = username_adoptante;
         this.idmascota = idmascota;
-        this.fecha_adopcion = fecha_adopcion;
-        this.estadoadopcion = estadoadopcion;
     }
     
     public Adopcion() {
@@ -30,10 +28,9 @@ public class Adopcion {
     public String toString() {
         String info = "----------------------------------------\n";
         info += "Id adopción: " + idadopcion;
-        info += "\nId usuario que adopta: " + idusername;
+        info += "\nId usuario que adopta: " + username_adoptante;
         info += "\nId mascota: " + idmascota;
         info += "\nFecha adopción: " + fecha_adopcion;
-        info += "\nEstado de adopción: " + estadoadopcion;
         info += "\n----------------------------------------\n";
         return info;
     }
@@ -46,12 +43,12 @@ public class Adopcion {
         this.idadopcion = idadopcion;
     }
 
-    public String getIdusername() {
-        return idusername;
+    public String getUsername_adoptante() {
+        return username_adoptante;
     }
 
-    public void setIdusername(String idusername) {
-        this.idusername = idusername;
+    public void setUsername_adoptante(String username_adoptante) {
+        this.username_adoptante = username_adoptante;
     }
 
     public int getIdmascota() {
@@ -68,13 +65,5 @@ public class Adopcion {
 
     public void setFecha_adopcion(Calendar fecha_adopcion) {
         this.fecha_adopcion = fecha_adopcion;
-    }
-
-    public String getEstadoadopcion() {
-        return estadoadopcion;
-    }
-
-    public void setEstadoadopcion(String estadoadopcion) {
-        this.estadoadopcion = estadoadopcion;
     }
 }
