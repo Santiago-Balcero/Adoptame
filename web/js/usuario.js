@@ -21,11 +21,9 @@ async function getData(e) {
         biografia: form.biografia.value
     }
     if (UPDATE_PERSON.update) {
-        document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
         var texto = await updateUsuario(usuario)
     }
     else {
-        document.getElementById("inicio").href = "principal.html"
         var texto = await crearUsuario(usuario)
         sessionStorage.setItem("AuthenticationState", "Authenticated") 
     }
@@ -96,8 +94,15 @@ async function getDataURL() {
     if (username) {
         const usuario = await getUsuario(username)
         document.getElementById("update-text").innerText = "Actualiza solo la información que necesites."
-        document.getElementById("tipoId-input").setAttribute("value", usuario.tipo_documento)
+        //Llenar el menú desplegable con la especie de la mascota
+        let tipoIdInput = document.getElementById("tipoId-input")
+        tipoIdInput.length = 0
+        let tipoId = document.createElement('option')
+        tipoId.text = usuario.tipo_documento
+        tipoIdInput.add(tipoId)
+        tipoIdInput.selectedIndex = 0;
         document.getElementById("tipoId-input").setAttribute("disabled", "")
+        //Fin
         document.getElementById("email-input").setAttribute("value", usuario.email)
         document.getElementById("username-input").setAttribute("value", usuario.username)
         document.getElementById("username-input").setAttribute("disabled", "")
@@ -114,6 +119,10 @@ async function getDataURL() {
         UPDATE_PERSON.update = true
         UPDATE_PERSON.username = usuario.username
         document.getElementById("btn-create-user").setAttribute("value", "Actualizar")
+        document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
+    }
+    else {
+        document.getElementById("inicio").href = "principal.html"
     }
 }
 

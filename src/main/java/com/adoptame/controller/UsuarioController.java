@@ -1,6 +1,7 @@
 package com.adoptame.controller;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.adoptame.model.Mascota;
 import com.adoptame.model.Usuario;
+import com.adoptame.services.MascotaService;
 import com.adoptame.services.UsuarioService;
 
 //Decorador para que esta clase procese las peticiones HTTP
@@ -21,12 +24,14 @@ import com.adoptame.services.UsuarioService;
 @RequestMapping("/adoptame/usuarios")
 public class UsuarioController {
     private UsuarioService userService;
+    private MascotaService mascotaService;
     private ContrasenaController pass;
     
 
     public UsuarioController() {
         userService = new UsuarioService();
         pass = new ContrasenaController();
+        mascotaService = new MascotaService();
     }
 
     //Decorador para indicar que este método se ejecuta cuando la petición HTTP es GET
@@ -71,6 +76,11 @@ public class UsuarioController {
     @DeleteMapping("/{username}")
     @CrossOrigin("*")
     public String deleteUsuario(@PathVariable(name="username")String username) {
+        List<Mascota> mascotas = new ArrayList<Mascota>();
+        mascotas = mascotaService.getMascotasUsuario(username);
+        for(int i = 0; i < mascotas.size(); i++) {
+            mascotaService.deleteMascota(mascotas.get(i).getIdmascota());
+        }
         return userService.deleteUsuario(username);
     }
 }

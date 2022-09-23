@@ -50,9 +50,9 @@ function mostrarPerfil(usuario){
     section.innerHTML = perfil
 }
 
-function mostrarMascotas(mascotas){
+function mostrarMascotas(mascotas, username){
     const section = document.getElementById('profile-tab-pane')
-    let card = '<div class="row row-cols-1 row-cols-md-2 g-4">'
+    var card = '<div class="row row-cols-1 row-cols-md-2 g-4">'
     if(mascotas.length==0){
         section.innerHTML = `
         <div class="card">
@@ -77,10 +77,20 @@ function mostrarMascotas(mascotas){
             <p class="card-text">Raza: ${mascota.raza}</p>
             <p class="card-text">Edad: ${mascota.edad} meses</p>
             <p class="card-text">Ciudad: ${mascota.ciudad}</p>
+            <div id="delete-mascota-alert"></div>
+            <div class="card-body-btn" id="btns-mascota">
+                <button class="btn btn-primary" onclick="updateMascota(${username}, ${mascota.idmascota})">Actualizar</button>
+                <button class="btn btn-primary" onclick="deleteMascota(${mascota.idmascota})">Eliminar</button>
+            </div>
           </div>
         </div>
-      </div>
+        </div>
         `
+        card += `<div class="card-body">
+                <p class="card-text">Registrar más mascotas:</p>
+                <button class="btn btn-primary" onclick="registrarMascota()">Registrar</button>
+            </div>`
+        section.innerHTML = card
     }
     else if (mascotas.length>1){
         for(let i = 0; i < mascotas.length; i++){
@@ -97,14 +107,20 @@ function mostrarMascotas(mascotas){
                         <p class="card-text">Raza: ${mascota.raza}</p>
                         <p class="card-text">Edad: ${mascota.edad} meses</p>
                         <p class="card-text">Ciudad: ${mascota.ciudad}</p>
-                        <div class="card-body-btn">
-                            <button class="btn btn-primary">Actualizar</button>
+                        <div id="delete-mascota-alert"></div>
+                        <div class="card-body-btn" id="btns-mascota">
+                            <button class="btn btn-primary" onclick="updateMascota(${username}, ${mascota.idmascota})">Actualizar</button>  
+                            <button class="btn btn-primary" onclick="deleteMascota(${mascota.idmascota})">Eliminar</button>
                         </div>
                     </div>
                 </div>
             </div>
             `
         }
+        card += `<div class="card-body" id="btn-registrar-mascota">
+            <p class="card-text">Registrar más mascotas:</p>
+            <button class="btn btn-primary" onclick="registrarMascota()">Registrar</button>
+            </div>`
         card+='</div>'
         section.innerHTML = card
     }
@@ -122,7 +138,7 @@ function mostrarMascotas(mascotas){
 
 async function mostrarAdopciones(adopciones) {
     const section = document.getElementById('home-tab-pane')
-    let card = '<div class="row row-cols-1 row-cols-md-2 g-4">'
+    var card = '<div class="row row-cols-1 row-cols-md-2 g-4">'
     if (adopciones.length==1){
         const adopcion = adopciones[0]
         const idmascota = adopcion.idmascota
@@ -205,11 +221,27 @@ function registrarMascota(){
     window.location.href = "mascota.html?username=" + username
 }
 
+async function getMascota(idmascota){
+    const resp = await fetch(`${url2}/${idmascota}`, {
+        method: "GET"
+    })
+    const mascota = resp.json()
+    return mascota
+}
+
 function getDataUrl() {
     const search = window.location.search
     const urlHTML = new URLSearchParams(search)
     const username = urlHTML.get("username")
     return username
+}
+
+async function getAdopcionesUsername(username){
+    const resp = await fetch(`${url3}/username/${username}`, {
+        method: "GET"
+    })
+    const adopciones = resp.json()
+    return adopciones
 }
 
 function adoptar() {
@@ -242,6 +274,25 @@ function loadPrincipal() {
     window.location.herf = "principal.html"
 }
 
+async function updateMascota(username, idmascota) {
+    window.location.href = "mascota.html?username=" + username + "&idmascota=" + idmascota
+}
+
+async function deleteMascota(idmascota) {
+    const resp = await fetch(`${url2}/${idmascota}`, {
+        method: "DELETE"
+    })
+    const text = await resp.text()
+    const section = document.getElementById("delete-mascota-alert")
+    const alert = `
+        <div class="alert alert-success" role="alert">
+            ${text}
+        </div>
+    `
+    section.innerHTML = alert
+    location.reload()
+}
+
 async function main() {
     if(sessionStorage.getItem("AuthenticationState") === null) {
         window.location.href = "principal.html"
@@ -250,12 +301,11 @@ async function main() {
         const username = getDataUrl()
         const usuario = await getUser(username)
         const mascotas = await getMascotasIdcontacto(username)
-        document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
-        mostrarMascotas(mascotas)
         const adopciones = await getAdopcionesUsername(username)
         mostrarPerfil(usuario)
-        mostrarMascotas(mascotas)
+        mostrarMascotas(mascotas, usuario.username)
         mostrarAdopciones(adopciones)
+        document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
     }
 }
 

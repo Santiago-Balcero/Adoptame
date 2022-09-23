@@ -91,6 +91,8 @@ async function main() {
     const idmascota = getDataUrlIdmascota()
     const mascota = await getMascota(idmascota)
     mostrarMascota(mascota)
+    document.getElementById("inicio").href = "inicio.html?username=" + getDataUrlUsername()
+
 }
 
 main()

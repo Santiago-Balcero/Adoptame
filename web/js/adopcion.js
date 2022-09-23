@@ -49,6 +49,7 @@ async function main(){
     else {
         const mascotas = await getMascotas(url)
         mostrarMascotas(mascotas)
+        document.getElementById("inicio").href = "inicio.html?username=" + getDataUrl()
     }
 }
 
