@@ -75,7 +75,7 @@ function mostrarMascotas(mascotas, username) {
           <div id="alerta-adopcion">
           </div>
           <div class="card-body">
-            <a href="#" class="blog-card-title">${mascota.nombre}</a>
+            <h5 class="blog-card-title">${mascota.nombre}</h5>
             <p class="card-text">Raza: ${mascota.raza}</p>
             <p class="card-text">Edad: ${mascota.edad} meses</p>
             <p class="card-text">Ciudad: ${mascota.ciudad}</p>`
@@ -90,6 +90,11 @@ function mostrarMascotas(mascotas, username) {
                 <button class="btn btn-primary" onclick="updateMascota(${username}, ${mascota.idmascota})">Actualizar</button>
                 <button class="btn btn-primary" onclick="deleteMascota(${mascota.idmascota})">Eliminar</button>
             </div>
+                        ` 
+        
+            card += `<div class="card-body-btn" id="btns-mascota">
+                <button class="btn btn-primary" onclick="updateMascota(${username}, ${mascota.idmascota})">Actualizar</button>
+                <button class="btn btn-primary" onclick="deleteMascota(${mascota.idmascota})">Eliminar</button>
           </div>
         </div>
         </div>
@@ -167,7 +172,7 @@ async function mostrarAdopciones(adopciones) {
         <div class="card blog-card" id="mascota-card">
           <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
           <div class="card-body">
-            <a href="#" class="blog-card-title">${mascota.nombre}</a>
+            <h5 class="blog-card-title">${mascota.nombre}</h5>
             <p class="card-text">Raza: ${mascota.raza}</p>
             <p class="card-text">Edad: ${mascota.edad} meses</p>
             <p class="card-text">Ciudad: ${mascota.ciudad}</p>
@@ -195,7 +200,7 @@ async function mostrarAdopciones(adopciones) {
                 <div class="card blog-card" id="mascota-card">
                 <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
                     <div class="card-body">
-                        <a href="#" class="blog-card-title">${mascota.nombre}</a>
+                        <h5 class="blog-card-title">${mascota.nombre}</h5>
                         <p class="card-text">Raza: ${mascota.raza}</p>
                         <p class="card-text">Edad: ${mascota.edad} meses</p>
                         <p class="card-text">Ciudad: ${mascota.ciudad}</p>
@@ -222,7 +227,6 @@ async function mostrarAdopciones(adopciones) {
             </div>
         </div>`
     }
-    console.log(adopciones)
 }
 
 async function getUser(username) {

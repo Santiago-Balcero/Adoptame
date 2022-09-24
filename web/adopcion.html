@@ -22,72 +22,52 @@
     <div class="container-fluid">
         <div class="row row-cols-2">
           <div class="col" id="col1">
-            <form>
+            <form onsubmit="filtrar(event)">
                 <div class="mb-3">
                     <h4>Filtros</h4>
                     <hr>
                 </div>
                 <div class="mb-3">
-                  <label for="ciudad" class="form-label">Ciudad</label>
-                  <input type="text" class="form-control" id="ciudad" aria-describedby="emailHelp">
+                  <label for="ciudad-input" class="form-label">Ciudad</label>
+                  <select class="form-select" aria-label="Default select example" id="ciudad-input" name="ciudad">
+                  
+                  </select>
                   <hr>
                 </div>
                 <div class="mb-3">
-                  <label for="raza" class="form-label">Raza</label>
-                  <input type="text" class="form-control" id="raza">
+                  <label for="raza-input" class="form-label">Raza</label>
+                   <select class="form-select" aria-label="Default select example" id="raza-input" name="raza">
+                    
+                  </select>
                   <hr>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Especie</label>
-                    <br>
-                    <input class="form-check-input" type="checkbox" value="" id="gato">
-                    <label class="form-check-label" for="gato">
-                      Gato
-                    </label>
-                    <br>
-                    <input class="form-check-input" type="checkbox" value="" id="perro">
-                    <label class="form-check-label" for="perro">
-                      Perro
-                    </label>
+                    <label for="especie-input" class="form-label">Especie</label>
+                    <select class="form-select" aria-label="Default select example" id="especie-input" name="especie">
+                      <option>Todas</option>
+                      <option>Gato</option>
+                      <option>Perro</option>
+                    </select>
                     <hr>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Edad</label>
-                    <br>
-                    <input class="form-check-input" type="checkbox" value="" id="6months">
-                    <label class="form-check-label" for="6months">
-                      1 - 6 meses
-                    </label>
-                    <br>
-                    <input class="form-check-input" type="checkbox" value="" id="12months">
-                    <label class="form-check-label" for="12months">
-                      6 - 12 meses
-                    </label>
-                    <br>
-                    <input class="form-check-input" type="checkbox" value="" id="24months">
-                    <label class="form-check-label" for="24months">
-                      12 - 24 meses
-                    </label>
+                    <label for="edad-input" class="form-label">Edad</label>
+                    <select class="form-select" aria-label="Default select example" id="edad-input" name="edad">
+                      <option>Todas</option>
+                      <option>1 a 6 meses</option>
+                      <option>7 a 12 meses</option>
+                      <option>13 a 24 meses</option>
+                    </select>
                     <hr>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Tamaño</label>
-                    <br>
-                    <input class="form-check-input" type="checkbox" value="" id="small">
-                    <label class="form-check-label" for="small">
-                      Pequeño
-                    </label>
-                    <br>
-                    <input class="form-check-input" type="checkbox" value="" id="medium">
-                    <label class="form-check-label" for="medium">
-                      Mediano
-                    </label>
-                    <br>
-                    <input class="form-check-input" type="checkbox" value="" id="big">
-                    <label class="form-check-label" for="big">
-                      Grande
-                    </label>
-                    <hr>
+                    <label for="tamanio-input" class="form-label">Tamaño</label>
+                    <select class="form-select" aria-label="Default select example" id="tamanio-input" name="tamanio">
+                      <option>Todos</option>
+                      <option>Pequeño</option>
+                      <option>Mediano</option>
+                      <option>Grande</option>
+                    </select>
                 </div>
                 <div id="btn-cont">
                     <button type="submit" class="btn btn-primary">Filtrar</button>
