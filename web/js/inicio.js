@@ -71,38 +71,31 @@ function mostrarMascotas(mascotas, username) {
         card += `
         <div class="col">
         <div class="card blog-card" id="mascota-card">
-          <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
-          <div id="alerta-adopcion">
-          </div>
+          <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">`
+        if(mascota.adopcion == 1) {
+        card += `
+                <div class="alert alert-danger" role="alert">
+                    ¡Tienes una solicitud de adopción! <button class="alert-link" id="ir-adopcion" onclick="verAdopcion(${username}, ${mascota.idmascota})">Ver.</button>
+                </div>
+                ` 
+        }
+        card += `
           <div class="card-body">
             <h5 class="blog-card-title">${mascota.nombre}</h5>
             <p class="card-text">Raza: ${mascota.raza}</p>
             <p class="card-text">Edad: ${mascota.edad} meses</p>
-            <p class="card-text">Ciudad: ${mascota.ciudad}</p>`
-            if(mascota.adopcion == 1) {
-                card += `
-                        <div class="alert alert-danger" role="alert">
-                            ¡Tienes una solicitud de adopción! <button class="alert-link" id="ir-adopcion" onclick="verAdopcion(${username}, ${mascota.idmascota})">Ver.</button>
-                        </div>
-                        ` 
-            }
-            card += `<div class="card-body-btn" id="btns-mascota">
-                <button class="btn btn-primary" onclick="updateMascota(${username}, ${mascota.idmascota})">Actualizar</button>
-                <button class="btn btn-primary" onclick="deleteMascota(${mascota.idmascota})">Eliminar</button>
-            </div>
-                        ` 
-        
-            card += `<div class="card-body-btn" id="btns-mascota">
+            <p class="card-text">Ciudad: ${mascota.ciudad}</p>
+            <div class="card-body-btn" id="btns-mascota">
                 <button class="btn btn-primary" onclick="updateMascota(${username}, ${mascota.idmascota})">Actualizar</button>
                 <button class="btn btn-primary" onclick="deleteMascota(${mascota.idmascota})">Eliminar</button>
           </div>
         </div>
         </div>
-        `
-        card += `<div class="card-body">
-                <p class="card-text">Registrar más mascotas:</p>
-                <button class="btn btn-primary" onclick="registrarMascota()">Registrar</button>
-            </div>`
+        </div>
+        <div class="card-body">
+            <p class="card-text">Registrar más mascotas:</p>
+            <button class="btn btn-primary" onclick="registrarMascota()">Registrar</button>
+        </div>`
         section.innerHTML = card
     }
     else if (mascotas.length > 1) {
@@ -138,6 +131,7 @@ function mostrarMascotas(mascotas, username) {
             </div>
             `
         }
+        
         card += `<div class="card-body" id="btn-registrar-mascota">
             <p class="card-text">Registrar más mascotas:</p>
             <button class="btn btn-primary" onclick="registrarMascota()">Registrar</button>
