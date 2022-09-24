@@ -3,9 +3,14 @@ const url = "http://localhost:8080/adoptame/usuarios"
 async function iniciarSesion(e){
     e.preventDefault()
     const form = e.target
-    const username =form.documento.value
+    const username = form.documento.value
     const password =form.contrasena.value
-    const user = await getUser(username)
+    try{
+    var user = await getUser(username)
+    }
+    catch {
+        loginError()
+    }
     const pass = await hashPass(password)
     if(pass == user.contrasena) {
         //new
@@ -13,13 +18,16 @@ async function iniciarSesion(e){
         window.location.href = "inicio.html?username=" + user.username
     }
     else {
-        const section = document.getElementById('alert-cont')
+        loginError()
+    }
+}
+
+function loginError() {
+    const section = document.getElementById('alert-cont')
         section.innerHTML = `
         <div class="alert alert-danger" role="alert">
         Usuario o contraseña incorrectos.
-        </div>
-        `
-    }
+        </div>`   
 }
 
 async function getUser(username){

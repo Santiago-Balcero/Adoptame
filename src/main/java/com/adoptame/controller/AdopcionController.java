@@ -8,17 +8,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adoptame.model.Adopcion;
+import com.adoptame.model.Mascota;
 import com.adoptame.services.AdopcionService;
+import com.adoptame.services.MascotaService;
 
+import java.util.Calendar;
 import java.util.List;
 
 @RestController
 @RequestMapping("/adoptame/adopcion")
 public class AdopcionController {
     private AdopcionService adopcionService;
+    private MascotaService mascotaService;
 
     public AdopcionController(){
         adopcionService = new AdopcionService();
+        mascotaService = new MascotaService();
     }
 
     @GetMapping("/username/{username}")
@@ -26,9 +31,17 @@ public class AdopcionController {
         return adopcionService.getAdopcionesUsuario(username_adoptante);
     }
 
-    @PostMapping
-    public String createAdopcion(@RequestBody Adopcion adopcion) {
-        return adopcionService.createAdopcion(adopcion);
+    @GetMapping("/{idmascota}")
+    public Adopcion getAdopcionIdMascota(@PathVariable(name="idmascota") int idmascota) {
+        return adopcionService.getAdopcionIdMascota(idmascota);
     }
 
+    @PostMapping
+    public String createAdopcion(@RequestBody Adopcion adopcion) {
+        Mascota mascota = mascotaService.getMascota(adopcion.getIdmascota());
+        mascota.setAdopcion(1);
+        mascotaService.updateMascota(mascota);
+        adopcion.setFecha_adopcion(Calendar.getInstance());
+        return adopcionService.createAdopcion(adopcion);
+    }
 }

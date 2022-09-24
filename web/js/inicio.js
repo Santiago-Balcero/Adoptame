@@ -2,20 +2,20 @@ const url = "http://localhost:8080/adoptame/usuarios"
 const url2 = "http://localhost:8080/adoptame/mascotas"
 const url3 = "http://localhost:8080/adoptame/adopcion"
 
-function mostrarPerfil(usuario){
+function mostrarPerfil(usuario) {
     const section = document.getElementById('profile-card')
     let imagen = ''
     let bio = ''
-    if (usuario.foto==null){
+    if (usuario.foto == null) {
         imagen = 'https://cdn-icons-png.flaticon.com/512/847/847969.png'
     }
-    else{
-        imagen=usuario.foto
+    else {
+        imagen = usuario.foto
     }
-    if(usuario.biografia==null){
+    if (usuario.biografia == null) {
         bio = 'Escribe algo sobre ti'
     }
-    else{
+    else {
         bio = usuario.biografia
     }
     let perfil = `
@@ -50,10 +50,10 @@ function mostrarPerfil(usuario){
     section.innerHTML = perfil
 }
 
-function mostrarMascotas(mascotas, username){
+function mostrarMascotas(mascotas, username) {
     const section = document.getElementById('profile-tab-pane')
     var card = '<div class="row row-cols-1 row-cols-md-2 g-4">'
-    if(mascotas.length==0){
+    if (mascotas.length == 0) {
         section.innerHTML = `
         <div class="card">
             <div class="card-body">
@@ -63,22 +63,30 @@ function mostrarMascotas(mascotas, username){
             </div>
         </div>`
     }
-    else if (mascotas.length==1){
+    else if (mascotas.length == 1) {
         const mascota = mascotas[0]
-        if(mascota.nombre == null) {
+        if (mascota.nombre == null) {
             mascota.nombre = "Nombre no registrado"
         }
-        card+=`
+        card += `
         <div class="col">
         <div class="card blog-card" id="mascota-card">
           <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
+          <div id="alerta-adopcion">
+          </div>
           <div class="card-body">
             <a href="#" class="blog-card-title">${mascota.nombre}</a>
             <p class="card-text">Raza: ${mascota.raza}</p>
             <p class="card-text">Edad: ${mascota.edad} meses</p>
-            <p class="card-text">Ciudad: ${mascota.ciudad}</p>
-            <div id="delete-mascota-alert"></div>
-            <div class="card-body-btn" id="btns-mascota">
+            <p class="card-text">Ciudad: ${mascota.ciudad}</p>`
+            if(mascota.adopcion == 1) {
+                card += `
+                        <div class="alert alert-danger" role="alert">
+                            ¡Tienes una solicitud de adopción! <button class="alert-link" id="ir-adopcion" onclick="verAdopcion(${username}, ${mascota.idmascota})">Ver.</button>
+                        </div>
+                        ` 
+            }
+            card += `<div class="card-body-btn" id="btns-mascota">
                 <button class="btn btn-primary" onclick="updateMascota(${username}, ${mascota.idmascota})">Actualizar</button>
                 <button class="btn btn-primary" onclick="deleteMascota(${mascota.idmascota})">Eliminar</button>
             </div>
@@ -92,22 +100,30 @@ function mostrarMascotas(mascotas, username){
             </div>`
         section.innerHTML = card
     }
-    else if (mascotas.length>1){
-        for(let i = 0; i < mascotas.length; i++){
+    else if (mascotas.length > 1) {
+        for (let i = 0; i < mascotas.length; i++) {
             const mascota = mascotas[i]
-            if(mascota.nombre == null) {
+            if (mascota.nombre == null) {
                 mascota.nombre = "Nombre no registrado"
             }
-            card+=`
+            card += `
             <div class="col">
                 <div class="card blog-card" id="mascota-card">
-                <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
-                    <div class="card-body">
+                <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">`
+            if(mascota.adopcion == 1) {
+                card += `
+                        <div class="alert alert-danger" role="alert">
+                            ¡Tienes una solicitud de adopción! <button class="alert-link" id="ir-adopcion" onclick="verAdopcion(${username}, ${mascota.idmascota})">Ver.</button>
+                        </div>
+                        ` 
+            }
+            card += `<div class="card-body">
                         <a href="#" class="blog-card-title">${mascota.nombre}</a>
                         <p class="card-text">Raza: ${mascota.raza}</p>
                         <p class="card-text">Edad: ${mascota.edad} meses</p>
                         <p class="card-text">Ciudad: ${mascota.ciudad}</p>
-                        <div id="delete-mascota-alert"></div>
+                        `
+            card += `<div class="delete-mascota-alert"></div>
                         <div class="card-body-btn" id="btns-mascota">
                             <button class="btn btn-primary" onclick="updateMascota(${username}, ${mascota.idmascota})">Actualizar</button>  
                             <button class="btn btn-primary" onclick="deleteMascota(${mascota.idmascota})">Eliminar</button>
@@ -121,7 +137,7 @@ function mostrarMascotas(mascotas, username){
             <p class="card-text">Registrar más mascotas:</p>
             <button class="btn btn-primary" onclick="registrarMascota()">Registrar</button>
             </div>`
-        card+='</div>'
+        card += '</div>'
         section.innerHTML = card
     }
     else {
@@ -139,14 +155,14 @@ function mostrarMascotas(mascotas, username){
 async function mostrarAdopciones(adopciones) {
     const section = document.getElementById('home-tab-pane')
     var card = '<div class="row row-cols-1 row-cols-md-2 g-4">'
-    if (adopciones.length==1){
+    if (adopciones.length == 1) {
         const adopcion = adopciones[0]
         const idmascota = adopcion.idmascota
         const mascota = await getMascota(idmascota)
-        if(mascota.nombre == null) {
+        if (mascota.nombre == null) {
             mascota.nombre = "Nombre no registrado"
         }
-        card+=`
+        card += `
         <div class="col">
         <div class="card blog-card" id="mascota-card">
           <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
@@ -157,20 +173,24 @@ async function mostrarAdopciones(adopciones) {
             <p class="card-text">Ciudad: ${mascota.ciudad}</p>
           </div>
         </div>
-      </div>
+        </div>
+        <div class="card-body">
+                <p class="card-text">¿Quieres adoptar otra mascota?</p>
+                <button class="btn btn-primary" onclick="adoptar()">Adoptar</button>
+        </div>
         `
-        card+='</div>'
+        card += '</div>'
         section.innerHTML = card
     }
-    else if (adopciones.length>1){
-        for(let i = 0; i < adopciones.length; i++){
+    else if (adopciones.length > 1) {
+        for (let i = 0; i < adopciones.length; i++) {
             const adopcion = adopciones[i]
             const idmascota = adopcion.idmascota
             const mascota = await getMascota(idmascota)
-            if(mascota.nombre == null) {
+            if (mascota.nombre == null) {
                 mascota.nombre = "Nombre no registrado"
             }
-            card+=`
+            card += `
             <div class="col">
                 <div class="card blog-card" id="mascota-card">
                 <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
@@ -184,7 +204,12 @@ async function mostrarAdopciones(adopciones) {
             </div>
             `
         }
-        card+='</div>'
+        card += `
+        <div class="card-body">
+            <p class="card-text">¿Quieres adoptar otra mascota?</p>
+            <button class="btn btn-primary" onclick="adoptar()">Adoptar</button>
+        </div>`
+        card += '</div>'
         section.innerHTML = card
     }
     else {
@@ -200,7 +225,7 @@ async function mostrarAdopciones(adopciones) {
     console.log(adopciones)
 }
 
-async function getUser(username){
+async function getUser(username) {
     const resp = await fetch(`${url}/${username}`, {
         method: "GET"
     })
@@ -208,7 +233,7 @@ async function getUser(username){
     return user
 }
 
-async function getMascotasIdcontacto(username){
+async function getMascotasIdcontacto(username) {
     const resp = await fetch(`${url2}/username/${username}`, {
         method: "GET"
     })
@@ -216,12 +241,12 @@ async function getMascotasIdcontacto(username){
     return mascotas
 }
 
-function registrarMascota(){
+function registrarMascota() {
     const username = getDataUrl()
     window.location.href = "mascota.html?username=" + username
 }
 
-async function getMascota(idmascota){
+async function getMascota(idmascota) {
     const resp = await fetch(`${url2}/${idmascota}`, {
         method: "GET"
     })
@@ -236,7 +261,7 @@ function getDataUrl() {
     return username
 }
 
-async function getAdopcionesUsername(username){
+async function getAdopcionesUsername(username) {
     const resp = await fetch(`${url3}/username/${username}`, {
         method: "GET"
     })
@@ -293,8 +318,12 @@ async function deleteMascota(idmascota) {
     location.reload()
 }
 
+function verAdopcion(username, idmascota) {
+    window.location.href = "info-adopcion.html?username="+ username + "&idmascota=" + idmascota
+}
+
 async function main() {
-    if(sessionStorage.getItem("AuthenticationState") === null) {
+    if (sessionStorage.getItem("AuthenticationState") === null) {
         window.location.href = "principal.html"
     }
     else {

@@ -24,13 +24,27 @@ public class AdopcionService {
         Session session = factory.openSession();
         session.beginTransaction();
         try {
-            String sql= String.format("FROM Adopcion WHERE username_adoptante='%s'", username_adoptante);
-            adopciones=session.createQuery(sql, Adopcion.class).list();
+            String sql = String.format("FROM Adopcion WHERE username_adoptante='%s'", username_adoptante);
+            adopciones = session.createQuery(sql, Adopcion.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         }
         session.close();
         return adopciones;
+    }
+
+    public Adopcion getAdopcionIdMascota(int idmascota) {
+        Adopcion adopcion = new Adopcion();
+        Session session = factory.openSession();
+        session.beginTransaction();
+        try {
+            String sql = String.format("FROM Adopcion WHERE idmascota ='%d'", idmascota);
+            adopcion = session.createQuery(sql, Adopcion.class).list().get(0);            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        session.close();
+        return adopcion;
     }
 
     public String createAdopcion(Adopcion adopcion) {
@@ -40,7 +54,7 @@ public class AdopcionService {
         try {
             session.persist(adopcion);
             session.getTransaction().commit();
-            message = "Adopción realizada con éxito.";
+            message = "Solicitud de adopción realizada con éxito.";
         } catch (Exception e) {
             e.printStackTrace();
             message = "Error al registrar la adopción en la base de datos:\n" + e.getMessage();
