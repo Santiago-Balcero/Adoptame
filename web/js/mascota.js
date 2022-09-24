@@ -6,14 +6,14 @@ async function getData(e){
     const form = e.target
     const mascota = {
         especie: form.especie.value,
-        salud: form.salud.value,
-        raza: form.raza.value,
-        ciudad: form.ciudad.value,
+        salud: capitalizeFirstLetter(form.salud.value),
+        raza: capitalizeFirstLetter(form.raza.value.replace(/\s/g, '')),
+        ciudad: capitalizeFirstLetter(form.ciudad.value.replace(/\s/g, '')),
         tamanio: form.tamanio.value,
         cantidad: form.cantidad.value,
-        color: form.color.value,
+        color: capitalizeFirstLetter(form.color.value),
         edad: form.edad.value,
-        nombre: form.nombre.value,
+        nombre: capitalizeFirstLetter(form.nombre.value),
         foto: form.foto.value,
         idcontacto: idcontacto
     }
@@ -60,6 +60,10 @@ function getDataUrl () {
     const username = url.get("username")
     return username
 }
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
 function main() {
     if(sessionStorage.getItem("AuthenticationState") === null) {

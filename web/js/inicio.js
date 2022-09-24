@@ -58,7 +58,7 @@ function mostrarMascotas(mascotas){
         <div class="card blog-card" id="mascota-card">
           <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
           <div class="card-body">
-            <a href="#" class="blog-card-title">${mascota.nombre}</a>
+            <h5 class="blog-card-title">${mascota.nombre}</h5>
             <p class="card-text">Raza: ${mascota.raza}</p>
             <p class="card-text">Edad: ${mascota.edad} meses</p>
             <p class="card-text">Ciudad: ${mascota.ciudad}</p>
@@ -66,6 +66,14 @@ function mostrarMascotas(mascotas){
             <button class="btn btn-primary">Actualizar</button>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card nolist-card">
+            <div class="card-body">
+                <h5 class="card-title">Registra una mascota nueva:</h5>
+                <button class="btn btn-primary" onclick="registrarMascota()">Registrar</button>
+            </div>
         </div>
       </div>
         `
@@ -83,7 +91,7 @@ function mostrarMascotas(mascotas){
                 <div class="card blog-card" id="mascota-card">
                 <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
                     <div class="card-body">
-                        <a href="#" class="blog-card-title">${mascota.nombre}</a>
+                        <h5 class="blog-card-title">${mascota.nombre}</h5>
                         <p class="card-text">Raza: ${mascota.raza}</p>
                         <p class="card-text">Edad: ${mascota.edad} meses</p>
                         <p class="card-text">Ciudad: ${mascota.ciudad}</p>
@@ -95,6 +103,16 @@ function mostrarMascotas(mascotas){
             </div>
             `
         }
+        card+=`
+        <div class="col">
+        <div class="card nolist-card">
+            <div class="card-body">
+                <h5 class="card-title">Registra una mascota nueva:</h5>
+                <button class="btn btn-primary" onclick="registrarMascota()">Registrar</button>
+            </div>
+        </div>
+      </div>
+        `
         card+='</div>'
         section.innerHTML = card
     }
@@ -125,11 +143,19 @@ async function mostrarAdopciones(adopciones) {
         <div class="card blog-card" id="mascota-card">
           <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
           <div class="card-body">
-            <a href="#" class="blog-card-title">${mascota.nombre}</a>
+            <h5 class="blog-card-title">${mascota.nombre}</h5>
             <p class="card-text">Raza: ${mascota.raza}</p>
             <p class="card-text">Edad: ${mascota.edad} meses</p>
             <p class="card-text">Ciudad: ${mascota.ciudad}</p>
           </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card nolist-card">
+            <div class="card-body">
+                <h5 class="card-title">Adopta una mascota nueva:</h5>
+                <button class="btn btn-primary" onclick="adoptar()">Adoptar</button>
+            </div>
         </div>
       </div>
         `
@@ -149,7 +175,7 @@ async function mostrarAdopciones(adopciones) {
                 <div class="card blog-card" id="mascota-card">
                 <img src="${mascota.foto}" class="card-img-top img-blog img-mascota" alt="perro.jpg">
                     <div class="card-body">
-                        <a href="#" class="blog-card-title">${mascota.nombre}</a>
+                        <h5 class="blog-card-title">${mascota.nombre}</h5>
                         <p class="card-text">Raza: ${mascota.raza}</p>
                         <p class="card-text">Edad: ${mascota.edad} meses</p>
                         <p class="card-text">Ciudad: ${mascota.ciudad}</p>
@@ -158,6 +184,16 @@ async function mostrarAdopciones(adopciones) {
             </div>
             `
         }
+        card+=`
+        <div class="col">
+        <div class="card nolist-card">
+            <div class="card-body">
+                <h5 class="card-title">Adopta una mascota nueva:</h5>
+                <button class="btn btn-primary" onclick="adoptar()">Adoptar</button>
+            </div>
+        </div>
+      </div>
+        `
         card+='</div>'
         section.innerHTML = card
     }
@@ -171,7 +207,6 @@ async function mostrarAdopciones(adopciones) {
             </div>
         </div>`
     }
-    console.log(adopciones)
 }
 
 async function getUser(username){

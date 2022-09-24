@@ -64,6 +64,34 @@ public class MascotaService {
         return mascotas;
     }
 
+    public List<Mascota> getCiudades() {
+        List<Mascota> ciudades = new ArrayList<Mascota>();
+        Session session = factory.openSession();
+        session.beginTransaction();
+        try {
+            String sql= "FROM Mascota GROUP BY ciudad";
+            ciudades=session.createQuery(sql, Mascota.class).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        session.close();
+        return ciudades;
+    }
+
+    public List<Mascota> getRazas() {
+        List<Mascota> razas = new ArrayList<Mascota>();
+        Session session = factory.openSession();
+        session.beginTransaction();
+        try {
+            String sql= "FROM Mascota GROUP BY raza";
+            razas=session.createQuery(sql, Mascota.class).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        session.close();
+        return razas;
+    }
+
     public String createMascota(Mascota mascota) {
         String message = "";
         Session session = factory.openSession();

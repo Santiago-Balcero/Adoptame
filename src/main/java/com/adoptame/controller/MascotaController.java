@@ -31,6 +31,16 @@ public class MascotaController {
         return service.getListaMascotas();
     }
 
+    @GetMapping("/ciudades")
+    public List<Mascota> getCiudades() {
+        return service.getCiudades();
+    }
+
+    @GetMapping("/razas")
+    public List<Mascota> getRazas() {
+        return service.getRazas();
+    }
+
     @GetMapping("/{idmascota}")
     public Mascota getMascota(@PathVariable(name = "idmascota") int idmascota) {
         return service.getMascota(idmascota);
