@@ -125,18 +125,21 @@ nav a {
     border-top-right-radius: 0.375rem;
     border-top-left-radius: 0.375rem;
 }
+.img-perfil{
+    border-radius: 50%;
+    height: 35vh;
+    margin-top: 3%;
+    margin-left: 3%;
+}
 #mascota-card{
     border: 1px solid rgb(183, 183, 183);
-    border-radius: 0.375rem;
 }
-
 #btn-registrar-mascota{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-
 #btns-mascota{
     display: flex;
     justify-content: space-between;

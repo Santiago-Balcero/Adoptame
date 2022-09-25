@@ -19,7 +19,7 @@ function mostrarPerfil(usuario) {
         bio = usuario.biografia
     }
     let perfil = `
-        <img src="${imagen}" class="card-img-top" alt="...">
+        <img src="${imagen}" class="card-img-top img-perfil" alt="...">
         <div class="card-body">
             <h5 class="card-title">${usuario.nombres} ${usuario.apellidos}</h5>
             <p class="card-text">${bio}</p>

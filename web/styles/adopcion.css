@@ -26,9 +26,11 @@ nav a {
 .container-fluid{
     padding-top: 1%;
 }
+.card-img-top{
+    height: 100%;
+}
 #cards-cont{
     padding: 0px;
-    border: 2px solid red;
     height: 90vh;
     overflow: scroll;
 }
