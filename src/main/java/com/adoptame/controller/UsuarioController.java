@@ -55,6 +55,7 @@ public class UsuarioController {
     }
 
     @PostMapping
+    @CrossOrigin("*")
     public String createUsuario(@RequestBody Usuario usuario) throws NoSuchAlgorithmException {
         if(pass.checkContrasena(usuario.getContrasena())) {
             usuario.setContrasena(pass.toHexString(pass.getSHA(usuario.getContrasena())));

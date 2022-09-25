@@ -26,32 +26,39 @@ public class MascotaController {
         service = new MascotaService();
     }
 
-    @GetMapping
-    public List<Mascota> getListaMascotas() {
-        return service.getListaMascotas();
+    @GetMapping("/show/{username}")
+    @CrossOrigin("*")
+    public List<Mascota> getListaMascotas(@PathVariable(name="username") String username) {
+        return service.getListaMascotas(username);
     }
 
     @GetMapping("/ciudades")
+    @CrossOrigin("*")
     public List<Mascota> getCiudades() {
         return service.getCiudades();
     }
 
     @GetMapping("/razas")
+    @CrossOrigin("*")
     public List<Mascota> getRazas() {
         return service.getRazas();
     }
 
     @GetMapping("/{idmascota}")
+    @CrossOrigin("*")
     public Mascota getMascota(@PathVariable(name="idmascota") int idmascota) {
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         return service.getMascota(idmascota);
     }
 
     @GetMapping("/username/{username}")
+    @CrossOrigin("*")
     public List<Mascota> getMascotasUsuario(@PathVariable(name="username") String idcontacto) {
         return service.getMascotasUsuario(idcontacto);
     }
 
     @PostMapping
+    @CrossOrigin("*")
     public String createMascota(@RequestBody Mascota mascota) {
         return service.createMascota(mascota);
     }

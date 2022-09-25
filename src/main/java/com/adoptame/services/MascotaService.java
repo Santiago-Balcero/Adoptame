@@ -24,12 +24,13 @@ public class MascotaService {
         }
     }
 
-    public List<Mascota> getListaMascotas() {
+    public List<Mascota> getListaMascotas(String username) {
         List<Mascota> mascotas = new ArrayList<Mascota>();
         Session session = factory.openSession();
         session.beginTransaction();
         try {
-            mascotas = session.createQuery("FROM Mascota WHERE adopcion=0", Mascota.class).list();
+            String sql = String.format("FROM Mascota WHERE adopcion = 0 and idcontacto != '%s'", username);
+            mascotas = session.createQuery(sql, Mascota.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         }

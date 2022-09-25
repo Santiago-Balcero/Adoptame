@@ -1,5 +1,6 @@
 package com.adoptame.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,16 +28,19 @@ public class AdopcionController {
     }
 
     @GetMapping("/username/{username}")
+    @CrossOrigin("*")
     public List<Adopcion> getAdopcionesUsuario(@PathVariable(name="username") String username_adoptante) {
         return adopcionService.getAdopcionesUsuario(username_adoptante);
     }
 
     @GetMapping("/{idmascota}")
+    @CrossOrigin("*")
     public Adopcion getAdopcionIdMascota(@PathVariable(name="idmascota") int idmascota) {
         return adopcionService.getAdopcionIdMascota(idmascota);
     }
 
     @PostMapping
+    @CrossOrigin("*")
     public String createAdopcion(@RequestBody Adopcion adopcion) {
         Mascota mascota = mascotaService.getMascota(adopcion.getIdmascota());
         mascota.setAdopcion(1);

@@ -100,8 +100,8 @@ function mostrarInformacion(idmascota){
     window.location.href = "info-adopcion.html?idmascota=" + idmascota + "&username=" + username
 }
 
-async function getMascotas(url){
-    const resp = await fetch(url)
+async function getMascotas(url, username){
+    const resp = await fetch(`${url}/show/${username}`)
     const mascotas = resp.json()
     return mascotas
 }
@@ -130,9 +130,10 @@ async function main(){
         window.location.href = "principal.html"
     }
     else {
+        const username = getDataUrl()
         const ciudades = await getCiudades(url)
         const razas = await getRazas(url)
-        const mascotas = await getMascotas(url)
+        const mascotas = await getMascotas(url, username)
         mostrarCiudades(ciudades)
         mostrarRazas(razas)
         mostrarMascotas(mascotas)
