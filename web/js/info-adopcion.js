@@ -136,10 +136,12 @@ async function main() {
         window.location.href = "principal.html"
     }
     else {
+        const username = getDataUrlUsername()
         const idmascota = getDataUrlIdmascota()
         const mascota = await getMascota(idmascota)
         mostrarMascota(mascota)
-        document.getElementById("inicio").href = "inicio.html?username=" + getDataUrlUsername()
+        document.getElementById("nosotros").href = "nosotros.html?username=" + username
+        document.getElementById("inicio").href = "inicio.html?username=" + username
     }
 }
 

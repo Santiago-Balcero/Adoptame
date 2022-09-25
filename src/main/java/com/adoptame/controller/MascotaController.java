@@ -47,7 +47,6 @@ public class MascotaController {
     @GetMapping("/{idmascota}")
     @CrossOrigin("*")
     public Mascota getMascota(@PathVariable(name="idmascota") int idmascota) {
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         return service.getMascota(idmascota);
     }
 

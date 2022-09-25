@@ -119,7 +119,8 @@ async function getDataURL() {
         UPDATE_PERSON.update = true
         UPDATE_PERSON.username = usuario.username
         document.getElementById("btn-create-user").setAttribute("value", "Actualizar")
-        document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
+    document.getElementById("nosotros").href = "nosotros.html?username=" + usuario.username
+    document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
     }
     else {
         document.getElementById("inicio").href = "principal.html"

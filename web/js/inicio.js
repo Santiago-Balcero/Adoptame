@@ -332,6 +332,7 @@ async function main() {
         mostrarPerfil(usuario)
         mostrarMascotas(mascotas, usuario.username)
         mostrarAdopciones(adopciones)
+        document.getElementById("nosotros").href = "nosotros.html?username=" + usuario.username
         document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
     }
 }

@@ -144,7 +144,9 @@ function main() {
     if(sessionStorage.getItem("AuthenticationState") === null) {
         window.location.href = "principal.html"
     }
-    document.getElementById("inicio").href = "inicio.html?username=" + getDataUrlUsername()
+    const username = getDataUrlUsername()
+    document.getElementById("inicio").href = "inicio.html?username=" + username
+    document.getElementById("nosotros").href = "nosotros.html?username=" + username
     getDataUrlMascota()
 }
 

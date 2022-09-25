@@ -42,9 +42,7 @@ async function hashPass(password){
     const resp = await fetch(`${url}/pass/${password}`, {
         method: "GET"
     })
-    console.log(resp)
     const pass = await resp.text()
-    console.log(pass)
     return pass
 }
 

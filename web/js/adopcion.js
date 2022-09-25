@@ -137,6 +137,7 @@ async function main(){
         mostrarCiudades(ciudades)
         mostrarRazas(razas)
         mostrarMascotas(mascotas)
+        document.getElementById("nosotros").href = "nosotros.html?username=" + username
         document.getElementById("inicio").href = "inicio.html?username=" + getDataUrl()
     }
 }
