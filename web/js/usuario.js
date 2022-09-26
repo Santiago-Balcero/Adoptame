@@ -140,6 +140,9 @@ function notRequiredInputs() {
     document.getElementById("contrasena-input").required = false
     document.getElementById("biografia-input").required = false
 }
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
