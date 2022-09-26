@@ -3,7 +3,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="connection.url">jdbc:mysql://localhost/adopta_me</property>
+    <property name="connection.url">jdbc:mysql://localhost/adoptame</property>
         <property name="connection.username">root</property>
         <property name="connection.password">admin</property>
     <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>

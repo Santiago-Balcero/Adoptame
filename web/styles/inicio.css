@@ -140,6 +140,12 @@ nav a {
     align-items: center;
     justify-content: center;
 }
+#btn-adoptar-mascota{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 #btns-mascota{
     display: flex;
     justify-content: space-between;

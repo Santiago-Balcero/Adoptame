@@ -87,6 +87,7 @@ function mostrarMascotas(mascotas, username) {
             <p class="card-text">Raza: ${mascota.raza}</p>
             <p class="card-text">Edad: ${mascota.edad} meses</p>
             <p class="card-text">Ciudad: ${mascota.ciudad}</p>
+            <div class="delete-mascota-alert" id="delete-mascota-alert"></div>
             <div class="card-body-btn" id="btns-mascota">
                 <button class="btn btn-primary" onclick="updateMascota(${username}, ${mascota.idmascota})">Actualizar</button>
                 <button class="btn btn-primary" onclick="deleteMascota(${mascota.idmascota})">Eliminar</button>
@@ -123,7 +124,7 @@ function mostrarMascotas(mascotas, username) {
                         <p class="card-text">Edad: ${mascota.edad} meses</p>
                         <p class="card-text">Ciudad: ${mascota.ciudad}</p>
                         `
-            card += `<div class="delete-mascota-alert"></div>
+            card += `<div class="delete-mascota-alert" id="delete-mascota-alert"></div>
                         <div class="card-body-btn" id="btns-mascota">
                             <button class="btn btn-primary" onclick="updateMascota(${username}, ${mascota.idmascota})">Actualizar</button>  
                             <button class="btn btn-primary" onclick="deleteMascota(${mascota.idmascota})">Eliminar</button>
@@ -133,12 +134,10 @@ function mostrarMascotas(mascotas, username) {
             </div>
             `
         }
-        
         card += `<div class="card-body" id="btn-registrar-mascota">
             <p class="card-text">Registrar más mascotas:</p>
             <button class="btn btn-primary" onclick="registrarMascota()">Registrar</button>
             </div>`
-        card += '</div>'
         section.innerHTML = card
     }
     else {
@@ -206,7 +205,7 @@ async function mostrarAdopciones(adopciones) {
             `
         }
         card += `
-        <div class="card-body">
+        <div class="card-body" id="btn-adoptar-mascota">
             <p class="card-text">¿Quieres adoptar otra mascota?</p>
             <button class="btn btn-primary" onclick="adoptar()">Adoptar</button>
         </div>`
