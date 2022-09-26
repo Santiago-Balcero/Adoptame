@@ -38,18 +38,9 @@ nav a {
     padding-bottom: 25px;
 }
 .card-img-top{
-    height: 85vh;
+    height: 50vh;
 }
-.btn-primary{
-    background-color: #ED8115; 
-    border: 1px solid #ac7f52;
-}
-.btn-primary:hover{
-    background-color: #2D768C;
-    border: 1px solid #205667;
-}
-#btn-section{
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
+p{
+    text-align: justify;
+    text-justify: inter-word;
 }

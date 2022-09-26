@@ -19,7 +19,9 @@ function mostrarPerfil(usuario) {
         bio = usuario.biografia
     }
     let perfil = `
-        <img src="${imagen}" class="card-img-top" alt="...">
+        <div class="ratio ratio-1x1 rounded-circle overflow-hidden">
+        <img src="${imagen}" class="card-img-top img-perfil" alt="...">
+        </div>
         <div class="card-body">
             <h5 class="card-title">${usuario.nombres} ${usuario.apellidos}</h5>
             <p class="card-text">${bio}</p>
@@ -334,6 +336,8 @@ async function main() {
         mostrarAdopciones(adopciones)
         document.getElementById("nosotros").href = "nosotros.html?username=" + usuario.username
         document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
+        document.getElementById("ayuda").href = "ayuda.html?username=" + usuario.username
+
     }
 }
 

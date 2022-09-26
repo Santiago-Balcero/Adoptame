@@ -9,7 +9,7 @@ async function getData(e){
     e.preventDefault()
     const idcontacto = getDataUrlUsername()
     const form = e.target
-    const mascota = {
+    var mascota = {
         especie: form.especie.value,
         salud: capitalizeFirstLetter(form.salud.value),
         raza: capitalizeFirstLetter(form.raza.value.replace(/\s/g, '')),
@@ -116,6 +116,7 @@ async function getDataUrlMascota() {
         //Fin
         document.getElementById("cantidad-input").setAttribute("value", mascota.cantidad)
         document.getElementById("edad-input").setAttribute("value", mascota.edad)
+        document.getElementById("btn-foto-mascota").value = "Actualizar foto"
         if (mascota.nombre != null) {
             document.getElementById("nombre-input").setAttribute("value", mascota.nombre)
         }
@@ -147,6 +148,7 @@ function main() {
     const username = getDataUrlUsername()
     document.getElementById("inicio").href = "inicio.html?username=" + username
     document.getElementById("nosotros").href = "nosotros.html?username=" + username
+    document.getElementById("ayuda").href = "ayuda.html?username=" + username
     getDataUrlMascota()
 }
 

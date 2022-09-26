@@ -8,11 +8,13 @@ function getDataUrl() {
 function main() {
     if (sessionStorage.getItem("AuthenticationState") === null) {
         document.getElementById("inicio").href = "principal.html"
+        document.getElementById("nosotros").href = "nosotros.html"
     }
     else {
         const username = getDataUrl()
         document.getElementById("inicio").href = "inicio.html?username=" + username
-        document.getElementById("ayuda").href = "ayuda.html?username=" + username
+        document.getElementById("nosotros").href = "nosotros.html?username=" + username
+
     }
 }
 

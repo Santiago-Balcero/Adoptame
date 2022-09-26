@@ -38,9 +38,9 @@ async function mostrarMascota(mascota){
         const section = document.getElementById('mascota-cont')
         let card = `
         <div class="card">
-                <img src="${usuarioAdoptante.foto}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5>Solicitud de adopción</h5>
+                <h5>Solicitud de adopción</h5>   
+                <img src="${usuarioAdoptante.foto}" class="card-img-top img-perfil" alt="...">
                     <hr>
                     <p class="card-text">Solicitud #: ${adopcion.idadopcion}</p>
                     <p class="card-text">Nombre de quien solicita: ${usuarioAdoptante.nombres} ${usuarioAdoptante.apellidos}</p>
@@ -142,6 +142,7 @@ async function main() {
         mostrarMascota(mascota)
         document.getElementById("nosotros").href = "nosotros.html?username=" + username
         document.getElementById("inicio").href = "inicio.html?username=" + username
+        document.getElementById("ayuda").href = "ayuda.html?username=" + username
     }
 }
 

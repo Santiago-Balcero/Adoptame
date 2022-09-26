@@ -75,7 +75,8 @@ h1{
     color: white;
     background-color: #ED8115;  
     height: 4.5vh;
-    padding-top: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;

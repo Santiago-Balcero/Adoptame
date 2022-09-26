@@ -30,6 +30,7 @@ nav a {
 }
 .card{
     padding-bottom: 0px;
+    max-width: 100vh;
 }
 .card-body{
     padding: 40px;

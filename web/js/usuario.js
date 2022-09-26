@@ -13,12 +13,12 @@ async function getData(e) {
         email: form.email.value,
         username: form.username.value,
         telefono: form.telefono.value,
-        nombres: form.nombres.value,
-        ciudad: form.ciudad.value,
-        apellidos: form.apellidos.value,
+        nombres: capitalizeFirstLetter(form.nombres.value),
+        ciudad: capitalizeFirstLetter(form.ciudad.value),
+        apellidos: capitalizeFirstLetter(form.apellidos.value),
         contrasena: form.contrasena.value,
         foto: form.foto.src,
-        biografia: form.biografia.value
+        biografia: capitalizeFirstLetter(form.biografia.value)
     }
     if (UPDATE_PERSON.update) {
         var texto = await updateUsuario(usuario)
@@ -121,6 +121,7 @@ async function getDataURL() {
         document.getElementById("btn-create-user").setAttribute("value", "Actualizar")
     document.getElementById("nosotros").href = "nosotros.html?username=" + usuario.username
     document.getElementById("inicio").href = "inicio.html?username=" + usuario.username
+    document.getElementById("ayuda").href = "ayuda.html?username=" + usuario.username
     }
     else {
         document.getElementById("inicio").href = "principal.html"
@@ -138,6 +139,10 @@ function notRequiredInputs() {
     document.getElementById("apellidos-input").required = false
     document.getElementById("contrasena-input").required = false
     document.getElementById("biografia-input").required = false
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 getDataURL()

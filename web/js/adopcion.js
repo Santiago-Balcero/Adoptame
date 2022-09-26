@@ -138,7 +138,8 @@ async function main(){
         mostrarRazas(razas)
         mostrarMascotas(mascotas)
         document.getElementById("nosotros").href = "nosotros.html?username=" + username
-        document.getElementById("inicio").href = "inicio.html?username=" + getDataUrl()
+        document.getElementById("inicio").href = "inicio.html?username=" + username
+        document.getElementById("ayuda").href = "ayuda.html?username=" + username
     }
 }
 
