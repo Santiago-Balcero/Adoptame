@@ -16,6 +16,7 @@ async function getData(e){
         ciudad: capitalizeFirstLetter(form.ciudad.value.replace(/\s/g, '')),
         tamanio: form.tamanio.value,
         cantidad: form.cantidad.value,
+        sexo: form.sexo.value,
         color: capitalizeFirstLetter(form.color.value),
         edad: form.edad.value,
         nombre: capitalizeFirstLetter(form.nombre.value),
@@ -77,6 +78,7 @@ function clearInputs (form) {
     form.raza.value = ""
     form.ciudad.value = ""
     form.tamanio.value = ""
+    form.sexo.value = ""
     form.cantidad.value = ""
     form.color.value = ""
     form.edad.value = ""
@@ -100,6 +102,14 @@ async function getDataUrlMascota() {
         especieInput.selectedIndex = 0;
         document.getElementById("especie-input").setAttribute("disabled", "")
         //Fin
+        let sexoInput = document.getElementById("sexo-input")
+        sexoInput.length = 0
+        let sexo = document.createElement('option')
+        sexo.text = mascota.sexo
+        sexoInput.add(sexo)
+        sexoInput.selectedIndex = 0
+        document.getElementById("sexo-input").setAttribute("disabled", "")
+        //Fin llenar menú con sexo de mascota
         document.getElementById("raza-input").setAttribute("value", mascota.raza)
         document.getElementById("raza-input").setAttribute("disabled", "")
         document.getElementById("color-input").setAttribute("value", mascota.color)

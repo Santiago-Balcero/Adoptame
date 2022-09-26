@@ -14,6 +14,7 @@ public class Mascota {
     private String color;
     private String tamanio;
     private int edad;
+    private String sexo;
     private String nombre;
     private String salud;
     private String ciudad;
@@ -22,11 +23,12 @@ public class Mascota {
     private String foto;
     private String idcontacto;
 
-    public Mascota(String especie, String raza, String color, String tamanio, int edad, String nombre, String salud, String ciudad, int cantidad, String foto, String idcontacto) {
+    public Mascota(String especie, String raza, String color, String tamanio, int edad, String sexo, String nombre, String salud, String ciudad, int cantidad, String foto, String idcontacto) {
         this.especie = especie;
         this.raza = raza;
         this.color = color;
         this.edad = edad;
+        this.sexo = sexo;
         this.nombre = nombre;
         this.salud = salud;
         this.ciudad = ciudad;
@@ -47,6 +49,7 @@ public class Mascota {
         info += "\nColor: " + color;
         info += "\nTamaño: " + tamanio;
         info += "\nEdad: " + edad;
+        info += "\nSexo: " + sexo;
         info += "\nNombre: " + nombre;
         info += "\nSalud: " + salud;
         info += "\nCiudad: " + ciudad;
@@ -93,6 +96,12 @@ public class Mascota {
     }
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+    public String getSexo() {
+        return sexo;
+    }
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
     public String getNombre() {
         return nombre;

@@ -62,4 +62,36 @@ public class AdopcionService {
         session.close();
         return message;
     }
+
+    public String deleteAdopcion(Adopcion adopcion) {
+        String message = "";
+        Session session = factory.openSession();
+        session.beginTransaction();
+        try {
+            session.remove(adopcion);
+            session.getTransaction().commit();
+            message = "Adopción eliminada con éxito.";
+        } catch (Exception e) {
+            message = "Error al eliminar a la adopción de la base de datos:\n" + e.getMessage();
+            e.printStackTrace();
+        }
+        session.close();
+        return message;
+    }
+
+    public String deleteAdopcionesUsuario(String username) {
+        List<Adopcion> adopciones = new ArrayList<>();
+        adopciones = getAdopcionesUsuario(username);
+        String message = "";
+        try {
+            for(int i = 0; i < adopciones.size(); i++) {
+                deleteAdopcion(adopciones.get(i));
+            }
+            message = "Adopciones del usuario eliminadas con éxito";
+        } catch (Exception e) {
+            message = "Error al eliminar las adopciones del usuario de la basode de datos: " + e.getMessage();
+            e.printStackTrace();
+        }
+        return message;
+    }
 }

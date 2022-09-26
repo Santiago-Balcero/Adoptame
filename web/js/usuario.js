@@ -125,6 +125,8 @@ async function getDataURL() {
     }
     else {
         document.getElementById("inicio").href = "principal.html"
+        document.getElementById("nosotros").href = "nosotros.html"
+        document.getElementById("ayuda").href = "ayuda.html"
     }
 }
 

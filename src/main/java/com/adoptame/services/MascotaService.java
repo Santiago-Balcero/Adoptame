@@ -137,6 +137,27 @@ public class MascotaService {
         }
         catch (Exception e) {
             message = "Error al eliminar a la mascota de la base de datos:\n" + e.getMessage();
+            e.printStackTrace();
+        }
+        session.close();
+        return message;
+    }
+
+    public String deleteMascotasUsuario(String username) {
+        List<Mascota> mascotas = new ArrayList<>();
+        mascotas = getMascotasUsuario(username);
+        String message = "";
+        Session session = factory.openSession();
+        session.beginTransaction();
+        try {
+            for(int i = 0; i < mascotas.size(); i++) {
+                session.remove(mascotas.get(i));
+                session.getTransaction().commit();
+            }
+            message = "Adopciones del usuario eliminadas con éxito";
+        } catch (Exception e) {
+            message = "Error al eliminar las mascotas del usuario en la base de datos: " + e.getMessage();
+            e.printStackTrace();
         }
         session.close();
         return message;

@@ -86,6 +86,7 @@ function mostrarMascotas(mascotas, username) {
             <h5 class="blog-card-title">${mascota.nombre}</h5>
             <p class="card-text">Raza: ${mascota.raza}</p>
             <p class="card-text">Edad: ${mascota.edad} meses</p>
+            <p class="card-text">Sexo: ${mascota.sexo}</p>
             <p class="card-text">Ciudad: ${mascota.ciudad}</p>
             <div class="delete-mascota-alert" id="delete-mascota-alert"></div>
             <div class="card-body-btn" id="btns-mascota">
@@ -122,6 +123,7 @@ function mostrarMascotas(mascotas, username) {
                         <a href="#" class="blog-card-title">${mascota.nombre}</a>
                         <p class="card-text">Raza: ${mascota.raza}</p>
                         <p class="card-text">Edad: ${mascota.edad} meses</p>
+                        <p class="card-text">Sexo: ${mascota.sexo}</p>
                         <p class="card-text">Ciudad: ${mascota.ciudad}</p>
                         `
             card += `<div class="delete-mascota-alert" id="delete-mascota-alert"></div>
@@ -170,6 +172,7 @@ async function mostrarAdopciones(adopciones) {
             <h5 class="blog-card-title">${mascota.nombre}</h5>
             <p class="card-text">Raza: ${mascota.raza}</p>
             <p class="card-text">Edad: ${mascota.edad} meses</p>
+            <p class="card-text">Sexo: ${mascota.sexo}</p>
             <p class="card-text">Ciudad: ${mascota.ciudad}</p>
           </div>
         </div>
@@ -198,6 +201,7 @@ async function mostrarAdopciones(adopciones) {
                         <h5 class="blog-card-title">${mascota.nombre}</h5>
                         <p class="card-text">Raza: ${mascota.raza}</p>
                         <p class="card-text">Edad: ${mascota.edad} meses</p>
+                        <p class="card-text">Sexo: ${mascota.sexo}</p>
                         <p class="card-text">Ciudad: ${mascota.ciudad}</p>
                     </div>
                 </div>

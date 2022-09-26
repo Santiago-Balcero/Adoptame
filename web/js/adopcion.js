@@ -42,13 +42,20 @@ function mostrarMascotas(mascotas) {
         else if(mascota.edad>=13 && mascota.edad<=24){
             clase = "13a24"
         }
+        else if(mascota.edad>=25 && mascota.edad<=48){
+            clase = "25a48"
+        }
+        else if(mascota.edad>=49){
+            clase = "+48"
+        }
         cards += `
-        <div class="col mascota-adop ${mascota.ciudad} ${mascota.raza} ${mascota.especie} ${clase} ${mascota.tamanio} todos-valores">
+        <div class="col mascota-adop ${mascota.ciudad} ${mascota.raza} ${mascota.especie} ${clase} ${mascota.tamanio} ${mascota.sexo} todos-valores">
             <div class="card">
                 <img src="${mascota.foto}" class="card-img-top">
                 <div class="card-body">
                     <h5>${mascota.nombre}</h5>
                     <p class="card-text">Edad: ${mascota.edad} meses</p>
+                    <p class="card-text">Sexo: ${mascota.sexo}</p>
                     <button class="btn btn-primary" onclick="mostrarInformacion(${mascota.idmascota})">Información</button>
                 </div>
             </div>
@@ -62,7 +69,7 @@ function filtrar(e){
     e.preventDefault()
     const form = e.target
     const mascotasAdop = document.querySelectorAll(".mascota-adop")
-    let filtros = [form.ciudad.value, form.raza.value, form.especie.value, form.edad.value, form.tamanio.value]
+    let filtros = [form.ciudad.value, form.raza.value, form.especie.value, form.sexo.value, form.edad.value, form.tamanio.value]
     let valores = []
     for (let i= 0; i < filtros.length; i++) {
         let valor = ""
@@ -78,6 +85,12 @@ function filtrar(e){
         else if(filtros[i]=="13 a 24 meses"){
             valor = "13a24"
         }
+        else if(filtros[i]=="25 a 48 meses"){
+            valor = "25a48"
+        }
+        else if(filtros[i]=="Más de 48 meses"){
+            valor = "+48"
+        }
         else {
             valor = filtros[i]
         }
@@ -86,7 +99,7 @@ function filtrar(e){
 
     for (let i =0; i < mascotasAdop.length; i++){
         const mascota = mascotasAdop[i]
-        if(mascota.classList.contains(valores[0]) && mascota.classList.contains(valores[1]) && mascota.classList.contains(valores[2]) && mascota.classList.contains(valores[3]) && mascota.classList.contains(valores[4])){
+        if(mascota.classList.contains(valores[0]) && mascota.classList.contains(valores[1]) && mascota.classList.contains(valores[2]) && mascota.classList.contains(valores[3]) && mascota.classList.contains(valores[4]) && mascota.classList.contains(valores[5])){
             mascota.style.display = "flex"
         }
         else {

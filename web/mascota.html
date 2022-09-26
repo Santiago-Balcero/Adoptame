@@ -80,19 +80,29 @@
             <div class="row">
                 <div class="col">
                     <label for="edad-input" class="form-label">Edad (en meses):</label>
-                    <input type="number" class="form-control" id="edad-input" min="1" max="24" name="edad" required>
+                    <input type="number" class="form-control" id="edad-input" min="1" max="180" name="edad" required>
                 </div>
                 <div class="col">
-                    <label for="nombre-input" class="form-label">Nombre (opcional):</label>
-                    <input type="text" class="form-control" id="nombre-input" name="nombre">
+                    <label for="sexo-input" class="form-label">Sexo:</label>
+                    <select class="form-select" aria-label="Default select example" id="sexo-input" name="sexo" required>
+                        <option selected>Macho</option>
+                        <option>Hembra</option>
+                    </select>
                 </div>
+            </div>
+            <div class="row">
+                
+                    <div class="col">
+                        <label for="nombre-input" class="form-label">Nombre (opcional):</label>
+                        <input type="text" class="form-control" id="nombre-input" name="nombre">
+                    </div>
             </div>
             <div class="row">
                 <div class="col">
                     <br>
                     <img src="https://cdn-icons-png.flaticon.com/512/4225/4225925.png" class="card-img-top" alt="..." id="form-foto-mascota" name="foto">
                     <div class="btn-cont">
-                        <input class="btn btn-primary" type="submit" id="btn-foto-mascota" value="Subir foto">
+                        <input class="btn btn-primary" id="btn-foto-mascota" value="Subir foto">
                     </div>
                 </div>
             </div>

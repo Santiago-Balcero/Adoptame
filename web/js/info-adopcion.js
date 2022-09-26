@@ -17,6 +17,7 @@ async function mostrarMascota(mascota){
                     <hr>
                     <p class="card-text">Edad: ${mascota.edad} meses</p>
                     <p class="card-text">Raza: ${mascota.raza}</p>
+                    <p class="card-text">Sexo: ${mascota.sexo}</p>
                     <p class="card-text">Ciudad: ${mascota.ciudad}</p>
                     <p class="card-text">Estado de salud: ${mascota.salud}</p>
                     <p class="card-text">Contacto: ${user.nombres} ${user.apellidos}</p>
