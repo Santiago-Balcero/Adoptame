@@ -30,7 +30,7 @@ function mostrarMascotas(mascotas) {
     let clase = ""
     for(let i = 0; i < mascotas.length; i++) {
         const mascota = mascotas[i]
-        if(mascota.nombre == null) {
+        if(mascota.nombre == null || mascota.nombre == "") {
             mascota.nombre = "Nombre no registrado"
         }
         if(mascota.edad>=1 && mascota.edad<=6){

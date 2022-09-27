@@ -8,7 +8,7 @@ let UPDATE_PERSON = {
 async function getData(e) {
     e.preventDefault()
     const form = e.target
-    const usuario = {
+    var usuario = {
         tipo_documento: form.tipoId.value,
         email: form.email.value,
         username: form.username.value,
@@ -29,13 +29,23 @@ async function getData(e) {
     }
     notRequiredInputs()
     const section = document.getElementById('alert-cont')
-    const alerta = `
+    if(texto === "Usuario creado con éxito.") {
+        var alerta = `
         <div class="alert alert-success" role="alert">
             ${texto}<button class="alert-link" id="ir-perfil" onclick="loadInicio(${usuario.username})">Ir al perfil.</button>
         </div>
         `
-    section.innerHTML = alerta
-    clearInputs(form)
+        section.innerHTML = alerta
+        clearInputs(form)
+    }
+    else {
+        var alerta = `
+        <div class="alert alert-danger" role="alert">
+            ${texto}
+        </div>
+        `
+        section.innerHTML = alerta
+    }
 }
 
 async function crearUsuario(usuario) {

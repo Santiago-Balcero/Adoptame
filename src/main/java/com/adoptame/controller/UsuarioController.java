@@ -56,11 +56,15 @@ public class UsuarioController {
     @PostMapping
     @CrossOrigin("*")
     public String createUsuario(@RequestBody Usuario usuario) throws NoSuchAlgorithmException {
-        if(pass.checkContrasena(usuario.getContrasena())) {
-            usuario.setContrasena(pass.toHexString(pass.getSHA(usuario.getContrasena())));
-            return userService.createUsuario(usuario);
+        Usuario usuariocheck = userService.getUsuario(usuario.getUsername());
+        if(usuariocheck == null){
+            if(pass.checkContrasena(usuario.getContrasena())) {
+                usuario.setContrasena(pass.toHexString(pass.getSHA(usuario.getContrasena())));
+                return userService.createUsuario(usuario);
+            }
+            return "Contraseña no válida.";
         }
-        return "Contraseña no válida.";
+        return "Usuario ya existe.";
     }
 
     @PutMapping

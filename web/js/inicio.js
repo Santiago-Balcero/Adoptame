@@ -67,7 +67,7 @@ function mostrarMascotas(mascotas, username) {
     }
     else if (mascotas.length == 1) {
         const mascota = mascotas[0]
-        if (mascota.nombre == null) {
+        if (mascota.nombre == null || mascota.nombre == "") {
             mascota.nombre = "Nombre no registrado"
         }
         card += `
@@ -105,7 +105,7 @@ function mostrarMascotas(mascotas, username) {
     else if (mascotas.length > 1) {
         for (let i = 0; i < mascotas.length; i++) {
             const mascota = mascotas[i]
-            if (mascota.nombre == null) {
+            if (mascota.nombre == null || mascota.nombre == "") {
                 mascota.nombre = "Nombre no registrado"
             }
             card += `
@@ -161,7 +161,7 @@ async function mostrarAdopciones(adopciones) {
         const adopcion = adopciones[0]
         const idmascota = adopcion.idmascota
         const mascota = await getMascota(idmascota)
-        if (mascota.nombre == null) {
+        if (mascota.nombre == null || mascota.nombre == "") {
             mascota.nombre = "Nombre no registrado"
         }
         card += `
@@ -190,7 +190,7 @@ async function mostrarAdopciones(adopciones) {
             const adopcion = adopciones[i]
             const idmascota = adopcion.idmascota
             const mascota = await getMascota(idmascota)
-            if (mascota.nombre == null) {
+            if (mascota.nombre == null || mascota.nombre == "") {
                 mascota.nombre = "Nombre no registrado"
             }
             card += `
