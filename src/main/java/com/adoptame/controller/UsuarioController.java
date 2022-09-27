@@ -62,9 +62,13 @@ public class UsuarioController {
                 usuario.setContrasena(pass.toHexString(pass.getSHA(usuario.getContrasena())));
                 return userService.createUsuario(usuario);
             }
-            return "Contraseña no válida.";
+            else {
+                return "Contraseña no válida.";
+            }
         }
-        return "Usuario ya existe.";
+        else {
+            return "Usuario ya existe.";
+        }
     }
 
     @PutMapping
