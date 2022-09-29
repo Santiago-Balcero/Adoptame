@@ -153,7 +153,7 @@ function capitalizeFirstLetter(string) {
 
 function main() {
     if(sessionStorage.getItem("AuthenticationState") === null) {
-        window.location.href = "principal.html"
+        window.location.href = "index.html"
     }
     const username = getDataUrlUsername()
     document.getElementById("inicio").href = "inicio.html?username=" + username

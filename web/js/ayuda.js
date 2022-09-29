@@ -7,7 +7,7 @@ function getDataUrl() {
 
 function main() {
     if (sessionStorage.getItem("AuthenticationState") === null) {
-        document.getElementById("inicio").href = "principal.html"
+        document.getElementById("inicio").href = "index.html"
         document.getElementById("nosotros").href = "nosotros.html"
     }
     else {

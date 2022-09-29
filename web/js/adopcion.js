@@ -140,7 +140,7 @@ function getDataUrl() {
 
 async function main(){
     if(sessionStorage.getItem("AuthenticationState") === null) {
-        window.location.href = "principal.html"
+        window.location.href = "index.html"
     }
     else {
         const username = getDataUrl()

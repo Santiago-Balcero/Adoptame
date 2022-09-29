@@ -295,11 +295,11 @@ async function deleteUsuario() {
         </div>
     `
     section.innerHTML = alert
-    window.location.href = "principal.html"
+    window.location.href = "index.html"
 }
 
 function loadPrincipal() {
-    window.location.herf = "principal.html"
+    window.location.herf = "index.html"
 }
 
 async function updateMascota(username, idmascota) {
@@ -327,7 +327,7 @@ function verAdopcion(username, idmascota) {
 
 async function main() {
     if (sessionStorage.getItem("AuthenticationState") === null) {
-        window.location.href = "principal.html"
+        window.location.href = "index.html"
     }
     else {
         const username = getDataUrl()

@@ -134,7 +134,7 @@ async function getDataURL() {
     document.getElementById("ayuda").href = "ayuda.html?username=" + usuario.username
     }
     else {
-        document.getElementById("inicio").href = "principal.html"
+        document.getElementById("inicio").href = "index.html"
         document.getElementById("nosotros").href = "nosotros.html"
         document.getElementById("ayuda").href = "ayuda.html"
     }
